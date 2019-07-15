@@ -6,28 +6,32 @@ import React, {Component} from 'react';
 class Header extends Component{
     render(){
         return(
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">College Card</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <a className="navbar-brand" href="#">
+                    <i className="fa fa-university fa-lg"></i>
+                    &ensp; College Card
+                    
+                </a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                    <a class="nav-link" href="#">College Review <span class="sr-only">(current)</span></a>
+                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul className="navbar-nav">
+                    <li className="nav-item active">
+                    <a className="nav-link" href="#">College Review <span className="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Search And Find</a>
+                    <li className="nav-item">
+                    <a className="nav-link" href="#">Search And Find</a>
                     </li>
                     
-                    <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Do we need a dropdown?
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Some link</a>
-                        <a class="dropdown-item" href="#">Another link</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a className="dropdown-item" href="#">Some link</a>
+                        <a className="dropdown-item" href="#">Another link</a>
+                        <a className="dropdown-item" href="#">Something else here</a>
                     </div>
                     </li>
                 </ul>
