@@ -12,7 +12,6 @@ class Home extends Component{
         return(
             <div>
                 <Header />
-                <Register />
                 <Login />
             </div>
         );
