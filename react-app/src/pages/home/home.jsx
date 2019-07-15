@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 
 import Header from '../../components//header/header';
 import Login from '../../components/login/login';
+import Register from '../../components/register/register';
 
 class Home extends Component{
 
@@ -11,6 +12,7 @@ class Home extends Component{
         return(
             <div>
                 <Header />
+                <Register />
                 <Login />
             </div>
         );

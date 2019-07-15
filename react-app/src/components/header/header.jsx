@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 
 
-
-
 class Header extends Component{
     render(){
         return(
@@ -10,7 +8,6 @@ class Header extends Component{
                 <a className="navbar-brand" href="#">
                     <i className="fa fa-university fa-lg"></i>
                     &ensp; College Card
-                    
                 </a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
