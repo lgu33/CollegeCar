@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="http://localhost:3000/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="http://localhost:3000/manifest.json">
+    <!--
+      Notice the use of  in the tags above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>College Card</title>
+    <!--CDN Links-->
+    <script src="College%20Card_files/jquery-3.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="College%20Card_files/bootstrap.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="College%20Card_files/bootstrap.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+    <link rel="stylesheet" type="text/css" href="College%20Card_files/font-awesome.css">
+    <script src="College%20Card_files/popper.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <style type="text/css">body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+</style><style type="text/css">.App {
+  text-align: center;
+  
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+</style><style type="text/css">.container{
+    margin-top: 2%;
+    
+}</style><style type="text/css">.login{
+    margin-top: 10%;
+}
+
+.card-header{
+    background-color: #70b5ff;
+    color: white;
+
+}</style><style type="text/css">.login{
+    margin-top: 10%;
+}
+
+.card-header{
+    background-color: #70b5ff;
+    color: white;
+
+}</style><style type="text/css">@import url(https://fonts.googleapis.com/css?family=Quicksand:300,400|Lato:400,300|Coda|Open+Sans);</style><style type="text/css">body {
+  background: #f8f5f0;
+  font-family: "Open sans", sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: #3498db;
+}
+
+.content-profile-page {
+  margin: 1em auto;
+  width: 44.23em;
+}
+
+.card {
+  background: #fff;
+  border-radius: 0.3rem;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border: .1em solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 1em; 
+}
+
+.followBtn{
+    bottom: 14.8rem;
+}
+
+.profile-user-page .img-user-profile {
+	margin: 0 auto;
+    text-align: center; 
+}
+
+.profile-user-page .img-user-profile .profile-bgHome {
+	border-bottom: .2em solid #f5f5f5;
+    width: 44.23em;
+    height: 16em;
+    object-fit: cover;
+  }
+
+
+.profile-user-page .img-user-profile .avatar {
+	margin: 0 auto;
+    background: #fff;
+    width: 7em;
+    height: 7em;
+    padding: 0.25em;
+    border-radius: .4em;
+    margin-top: -10em;
+    box-shadow: 0 0 .1em rgba(0, 0, 0, 0.35);
+    object-fit: cover;
+}
+
+.profile-user-page button {
+	position: absolute;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 7em; 
+  background: #3498db;
+  border: 1px solid #2487c9;
+  color: #fff;
+  outline: none;
+  border-radius: 0 .6em .6em 0;
+  padding: .80em;
+}
+
+.profile-user-page button:hover {
+  background: #51a7e0;
+  transition: background .2s ease-in-out;
+  border: 1px solid #2487c9;
+}
+
+.profile-user-page .user-profile-data, .profile-user-page .description-profile {
+  text-align: center;
+  padding: 0 1.5em; 
+}
+
+.profile-user-page .user-profile-data h1 {
+  font-family: "Lato", sans-serif;
+  margin-top: 0.35em;
+  color: #292f33;
+  margin-bottom: 0; 
+}
+
+.profile-user-page .user-profile-data p {
+	font-family: "Lato", sans-serif;
+  color: #8899a6; 
+  font-size: 1.1em;
+  margin-top: 0;
+  margin-bottom: 0.5em; 
+}
+
+.profile-user-page .description-profile {
+  color: #75787b;
+  font-size: 0.98em; 
+}
+
+.profile-user-page .data-user {
+	font-family: "Quicksand", sans-serif;
+  margin-bottom: 0;
+  cursor: pointer;
+  padding: 0;
+  list-style: none;
+  display: table;
+  width: 100.15%; 
+}
+
+.profile-user-page .data-user li {
+  margin: 0;
+  padding: 0;
+  width: 33.33334%;
+  display: table-cell;
+  text-align: center;
+  border-left: 0.1em solid transparent; 
+}
+
+.profile-user-page .data-user li:first-child {
+  border-left: 0; 
+}
+
+.profile-user-page .data-user li:first-child a {
+  border-bottom-left-radius: 0.3rem; 
+}
+
+.profile-user-page .data-user li:last-child a {
+  border-bottom-right-radius: 0.3rem; 
+}
+
+.profile-user-page .data-user li a, .profile-user-page .data-user li strong {
+  display: block; 
+}
+
+.profile-user-page .data-user li a {
+  background-color: #f7f7f7;
+  border-top: 1px solid rgba(242,242,242,0.5);
+  border-bottom: .2em solid #f7f7f7;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4),0 1px 1px rgba(255,255,255,0.4);
+  padding: .93em 0;
+  color: #46494c; 
+}
+.profile-user-page .data-user li a strong, .profile-user-page .data-user li a span {
+  font-weight: 600;
+  line-height: 1; 
+}
+.profile-user-page .data-user li a strong {
+  font-size: 2em; 
+}
+.profile-user-page .data-user li a span {
+  color: #717a7e; 
+}
+.profile-user-page .data-user li a:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-bottom: .2em solid #3498db;
+  color: #3498db; 
+}
+.profile-user-page .data-user li a:hover span {
+  color: #3498db; 
+}
+
+</style></head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"><div class="App"><nav class="navbar navbar-expand-lg navbar-light bg-light"><a class="navbar-brand" href="#"><i class="fa fa-university fa-lg"></i>  College Card</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNavDropdown"><ul class="navbar-nav"><li class="nav-item active"><a class="nav-link" href="#">College Review <span class="sr-only">(current)</span></a></li><li class="nav-item"><a class="nav-link" href="#">Search And Find</a></li><li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Do we need a dropdown?</a><div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"><a class="dropdown-item" href="#">Some link</a><a class="dropdown-item" href="#">Another link</a><a class="dropdown-item" href="#">Something else here</a></div></li></ul></div><form class="form-inline"><input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Quick Search"><button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></form></nav><div class="container"><div class="row"><div class="content-profile-page"><div class="profile-user-page card"><div class="img-user-profile"><img class="img-fluid profile-bgHome" src="College%20Card_files/birds.JPG"><img class="img-fluid avatar" src="College%20Card_files/nik.JPG" alt="allan"></div><button class="btn btn-success followBtn">Add Friend</button><div class="user-profile-data"><h1>Nik Burmeister</h1><p>"Put a Quote that you like here"</p></div><div class="description-profile">Give a little description of yourself</div><ul class="data-user"><li><a><strong>2.0</strong><span>GPA</span></a></li><li><a><strong>69</strong><span>Failed Classes</span></a></li><li style="border-right: 0.1em solid transparent;"><a><strong>100</strong><span>Keepin it Real Score</span></a></li></ul></div></div></div></div></div></div>
+    <!--
+      This HTML file is a template.
+      If you open it directly in the browser, you will see an empty page.
+
+      You can add webfonts, meta tags, or analytics to this file.
+      The build step will place the bundled scripts into the <body> tag.
+
+      To begin the development, run `npm start` or `yarn start`.
+      To create a production bundle, use `npm run build` or `yarn build`.
+    -->
+  <script src="College%20Card_files/bundle.js"></script><script src="College%20Card_files/0.js"></script><script src="College%20Card_files/main_002.js"></script><script src="College%20Card_files/main.js"></script>
+
+</body></html>

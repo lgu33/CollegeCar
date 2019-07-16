@@ -7,7 +7,6 @@ class Login extends Component{
     render(){
         return(
             <div className="login">
-                <div className="container">
                     <div className ="row justify-content-center">
                     <div className="col-md-6">
                     <div className="card border">
@@ -42,7 +41,6 @@ class Login extends Component{
                     </div>
                         </div>
                     </div>
-                </div>
             </div>
             
         );
