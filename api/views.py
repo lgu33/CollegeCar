@@ -1,10 +1,9 @@
 from flask import Blueprint, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from __init__ import app
+# from flask_sqlalchemy import SQLAlchemy
+#db = SQLAlchemy(app)
+#import db_builder
 
-db = SQLAlchemy(app)
 main = Blueprint('main', __name__)
-import db_builder
 
 
 @main.route('/add_college', methods=['POST'])

@@ -15,7 +15,7 @@ class Home extends Component{
             <div className="appWrap">
                 <Header />
                 <div className="container">
-                    <UserInfo />
+                    <Register />
                 </div>
             </div>
         );
