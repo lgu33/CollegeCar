@@ -15,7 +15,6 @@ class Register extends Component{
                         <div className="card-body">
                         <form action="" method="">
                             
-
                             <div class="form-group row">
                                 <label for="users_first_name" class="col-md-4 col-form-label text-md-right">First Name</label>
                                 <div class="col-md-6">
@@ -39,6 +38,13 @@ class Register extends Component{
                                 <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
                                     <input type="text" id="email_address" class="form-control" name="email-address" required autofocus></input>
+                                </div>
+                            </div>
+
+                            <div className="form-group row">
+                                <label className="col-md-4 col-form-label text-md-right">Date ofs Birth</label>
+                                <div className="col-md-6">
+                                    <input type="date" class="form-control" id="dob" placeholder="Date ofd Birth"></input>
                                 </div>
                             </div>
 
