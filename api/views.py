@@ -22,7 +22,7 @@ def register():
     return 'Done', 201
 
 
-@main.route('/login')
+@main.route('/login', methods=["POST", "GET"])
 def login():
     colleges = ["UW-Madison"]
     return jsonify({'colleges': colleges})

@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
-// pages
+// styling
 import './home.css'
 
 import Header from '../../components//header/header';
@@ -8,16 +8,25 @@ import Login from '../../components/login/login';
 import Register from '../../components/register/register';
 import UserInfo from '../../components/userinfo/userinfo';
 
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 class Home extends Component{
 
     render(){
         return(
-            <div className="appWrap">
-                <Header />
-                <div className="container">
-                    <Register />
+            <Router>
+                <div className="appWrap">
+                    <Header />
+                    <Switch>
+                        <div className="container">
+                            <Route path="/register" exact component={Register}/>
+                            <Route path="/login" exact component={Login}/>
+                            <Route path="/user/:id" exact component={UserInfo}/>
+                        </div>
+                    </Switch> 
                 </div>
-            </div>
+            </Router>
+            
         );
     }
 }
