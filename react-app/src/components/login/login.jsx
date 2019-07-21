@@ -7,8 +7,8 @@ import './login.css';
 class Login extends Component{
 
     state ={
-        username: "",
-        password:" ",
+        username:"",
+        password:"",
     }
     
 

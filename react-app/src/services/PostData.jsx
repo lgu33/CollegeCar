@@ -10,7 +10,7 @@ export function PostData(type, userData){
         .then((responseJson) => {
             resolve(responseJson);
         }).catch((error) => {
-            PromiseRejectionEvent(error);
+            console.log(error);
         })
     });
 }
