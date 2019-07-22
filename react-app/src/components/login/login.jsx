@@ -1,22 +1,33 @@
 import React, {Component, useEffect} from 'react';
 import { connect } from 'react-redux';
 import {PostData} from '../../services/PostData';
-
+import AuthService from '../../services/AuthService';
 import './login.css';
 
 class Login extends Component{
-
+    constructor(){
+        super();
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.AuthService = new AuthService()
+    }
     state ={
         username:"",
         password:"",
     }
     
+    componentWillMount(){
+        if(this.AuthService.loggedIn()){
+            this.props.history.replace('/')
+        }
+    }
 
     handleSubmit = (e) => {
         e.preventDefault();
-        PostData('login', this.state).then((result) =>{
-            let response = result;
-            console.log(response)
+        this.AuthService.login(this.state.username, this.state.password).then(res => {
+            this.props.history.replace('/')
+        }).catch(err => {
+            alert(err);
         })
     }
 
@@ -35,24 +46,24 @@ class Login extends Component{
                     <div className="card-header">Login</div>
                         <div className="card-body">
                             <form onSubmit={this.handleSubmit} method="">
-                                <div class="form-group row">
-                                    <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="username" class="form-control" name="username" onChange={this.handleChange} required autofocus></input>
+                                <div className="form-group row">
+                                    <label htmlFor="username" className="col-md-4 col-form-label text-md-right">Username</label>
+                                    <div className="col-md-6">
+                                        <input type="text" id="username" className="form-control" name="username" onChange={this.handleChange} required autoFocus></input>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
-                                    <div class="col-md-6">
-                                        <input type="text" id="password" class="form-control" name="password" onChange={this.handleChange} required autofocus></input>
+                                <div className="form-group row">
+                                    <label htmlFor="password" className="col-md-4 col-form-label text-md-right">Password</label>
+                                    <div className="col-md-6">
+                                        <input type="text" id="password" className="form-control" name="password" onChange={this.handleChange} required autoFocus></input>
                                     </div>
                                 </div>
-                                <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary">
+                                <div className="col-md-6 offset-md-4">
+                                    <button type="submit" className="btn btn-primary">
                                         Login
                                     </button>
                                     
-                                    <a href="#" class="btn btn-link">
+                                    <a href="#" className="btn btn-link">
                                         Forgot Your Password?
                                     </a>
                                 </div>

@@ -2,20 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5882837d-bd88-4c72-b2f1-fbffb3a4b1c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/api/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/base.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/test_auth.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tests/test_config.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/views/authorization.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/manage.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/src/components/header/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/header/header.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-app/src/components/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/login/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/components/register/register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/register/register.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/services/PostData.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/services/PostData.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/pages/home/home.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,22 +28,22 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="21" />
-          <entry key="py" value="9514" />
+          <entry key="py" value="9656" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="9535" />
+          <entry key="Python" value="9677" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="32" />
+          <entry key="py" value="34" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="32" />
+          <entry key="Python" value="34" />
         </counts>
       </usages-collector>
     </session>
@@ -59,10 +53,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
-              <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
+            <state relative-caret-position="340">
+              <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
               <folding>
                 <element signature="e#18#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/api/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+              <folding>
+                <marker date="1563755325086" expanded="true" signature="700:705" ph="..." />
+                <marker date="1563755325086" expanded="true" signature="950:955" ph="..." />
               </folding>
             </state>
           </provider>
@@ -72,7 +79,7 @@
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
-              <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -92,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/tests/test_auth.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2091">
-              <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+            <state relative-caret-position="153">
+              <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="26" selection-end-column="5" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
                 <marker date="1563746300363" expanded="true" signature="266:704" ph="..." />
@@ -108,8 +115,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/views/authorization.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="186" column="43" lean-forward="true" selection-start-line="186" selection-start-column="43" selection-end-line="186" selection-end-column="43" />
+            <state relative-caret-position="107">
+              <caret line="60" selection-start-line="60" selection-end-line="60" />
               <folding>
                 <element signature="e#0#60#0" expanded="true" />
                 <marker date="1563746721220" expanded="true" signature="274:283" ph="..." />
@@ -159,19 +166,20 @@
         <option value="$PROJECT_DIR$/api/tests/__init__.py" />
         <option value="$PROJECT_DIR$/api/tests/test_config.py" />
         <option value="$PROJECT_DIR$/api/views/__init__.py" />
-        <option value="$PROJECT_DIR$/api/config.py" />
         <option value="$PROJECT_DIR$/api/tests/base.py" />
-        <option value="$PROJECT_DIR$/api/__init__.py" />
         <option value="$PROJECT_DIR$/api/tests/test_auth.py" />
         <option value="$PROJECT_DIR$/api/models.py" />
         <option value="$PROJECT_DIR$/api/views/authorization.py" />
+        <option value="$PROJECT_DIR$/api/__init__.py" />
+        <option value="$PROJECT_DIR$/api/config.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1095" />
-    <option name="width" value="1472" />
-    <option name="height" value="1047" />
+    <option name="x" value="893" />
+    <option name="y" value="180" />
+    <option name="width" value="1956" />
+    <option name="height" value="1000" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -219,7 +227,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python tests.Unittests in test_auth.py">
+  <component name="RunManager" selected="Python.run">
     <configuration name="manage" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CollegeCar" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -283,9 +291,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.run" />
         <item itemvalue="Python tests.Unittests in test_auth.py" />
         <item itemvalue="Python.manage" />
-        <item itemvalue="Python.run" />
       </list>
     </recent_temporary>
   </component>
@@ -335,16 +343,16 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1095" y="0" width="1472" height="1047" extended-state="0" />
+    <frame x="562" y="183" width="1956" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8537143" visible="true" weight="0.15271966" />
-      <window_info id="Structure" order="1" sideWeight="0.14628571" side_tool="true" visible="true" weight="0.15271966" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8536122" visible="true" weight="0.11418144" />
+      <window_info id="Structure" order="1" sideWeight="0.14638783" side_tool="true" visible="true" weight="0.11418144" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3822563" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.04162103" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3833516" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3926097" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -397,6 +405,26 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>request.get_json()</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>request.data</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>request</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>request.authorization</expression-string>
+        <language-id>Python</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>data</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -418,26 +446,6 @@
       </expression>
       <expression>
         <expression-string>post_data.get(&quot;username&quot;)</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>user</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>login_data</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>login_data['message'] == 'Successful Login'</expression-string>
-        <language-id>Python</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>json.loads(login_reponse.data.decode())</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -518,24 +526,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" lean-forward="true" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/api/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-153">
-          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
-          <folding>
-            <marker date="1563739136077" expanded="true" signature="700:705" ph="..." />
-            <marker date="1563739136077" expanded="true" signature="916:921" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/tests/test_config.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -579,16 +569,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
-          <caret line="22" column="54" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
-          <folding>
-            <element signature="e#18#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/api/tests/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -609,10 +589,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/tests/test_auth.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2091">
-          <caret line="123" lean-forward="true" selection-start-line="123" selection-end-line="123" />
+        <state relative-caret-position="153">
+          <caret line="17" column="16" selection-start-line="17" selection-start-column="16" selection-end-line="26" selection-end-column="5" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
             <marker date="1563746300363" expanded="true" signature="266:704" ph="..." />
@@ -623,10 +610,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/api/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="28" column="32" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="32" />
+          <folding>
+            <marker date="1563755325086" expanded="true" signature="700:705" ph="..." />
+            <marker date="1563755325086" expanded="true" signature="950:955" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/flask/helpers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-498">
+          <caret line="166" column="4" selection-start-line="166" selection-start-column="4" selection-end-line="166" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="20" column="27" lean-forward="true" selection-start-line="20" selection-start-column="27" selection-end-line="20" selection-end-column="27" />
+          <folding>
+            <element signature="e#18#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/views/authorization.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="186" column="43" lean-forward="true" selection-start-line="186" selection-start-column="43" selection-end-line="186" selection-end-column="43" />
+        <state relative-caret-position="107">
+          <caret line="60" selection-start-line="60" selection-end-line="60" />
           <folding>
             <element signature="e#0#60#0" expanded="true" />
             <marker date="1563746721220" expanded="true" signature="274:283" ph="..." />

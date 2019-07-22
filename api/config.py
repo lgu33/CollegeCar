@@ -26,6 +26,7 @@ class BaseConfig:
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     SQL_TRACK_MODIFCATIONS = False
+    CORS_HEADERS = "Content-Type"
 
 
 class DevelopmentConfig(BaseConfig):

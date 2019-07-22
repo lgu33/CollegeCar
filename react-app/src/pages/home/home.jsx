@@ -21,6 +21,7 @@ class Home extends Component{
                         <div className="container">
                             <Route path="/register" exact component={Register}/>
                             <Route path="/login" exact component={Login}/>
+                            <Route path="/" exact component={UserInfo}/>
                             <Route path="/user/:id" exact component={UserInfo}/>
                         </div>
                     </Switch> 

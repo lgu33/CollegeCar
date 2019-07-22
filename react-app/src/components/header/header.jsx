@@ -1,5 +1,10 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import AuthSerice from '../../services/AuthService';
+import withAuth from '../withAuth';
+import {withRouter} from 'react-router';
+
+const Auth = new AuthSerice()
 
 class Header extends Component{
     render(){
@@ -53,16 +58,19 @@ class Header extends Component{
                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                                 <a className="dropdown-item" href="#">Profile</a>
                                 <a className="dropdown-item" href="#">Favorites</a>
-                                <a className="dropdown-item" href="#">Sign Out</a>
+                                <a className="dropdown-item" onClick={this.handleLogout.bind(this)}>Log Out</a>
                             </div>
                         </li>
                 </div>
                 
-                
             </nav>
         );
+    }
+    handleLogout(){
+        Auth.logout()
+        this.props.history.replace('/login')
     }
 
 }
 
-export default Header;
+export default withRouter(withAuth(Header));

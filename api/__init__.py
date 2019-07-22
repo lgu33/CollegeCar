@@ -1,5 +1,6 @@
 # api/__init__.py
 from flask import Flask
+from flask_cors import CORS
 from . import config
 import os
 """
@@ -9,6 +10,7 @@ NOTE: BECAUSE __INIT__.PY IS A PACKAGE, IMPORT STATEMENTS ARE RELATIVE. USE "." 
 
 def create_app():
     app = Flask(__name__)
+    CORS(app)
     app_settings = os.getenv("APP_SETTINGS", 'api.config.DevelopmentConfig')
 
     app.config.from_object(app_settings)
