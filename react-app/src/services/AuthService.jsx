@@ -8,6 +8,26 @@ export default class AuthService{
         this.login = this.login.bind(this);
         this.getProfile = this.getProfile.bind(this);
     }
+
+    register({first_name, last_name, username, email, dob, password, r_password, educational_attainment}){
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        headers.append('Accept', 'application/json');
+        headers.append('Authorization', 'Basic ' + base64.encode(username + ":" +  password));
+        headers.append('Origin','http://localhost:3000');
+        
+        return this.fetch(this.domain + '/auth/register', {
+            method:"POST",
+            mode: 'cors',
+            headers: headers, 
+            body: JSON.stringify({
+                first_name, last_name, username, email, dob, password, r_password, educational_attainment,
+            })
+        }).then(res=> {
+            this.setToken(res.auth_token);
+            return Promise.resolve(res);
+        })
+    }
     
     login(username, password){
         let headers = new Headers();
@@ -24,7 +44,7 @@ export default class AuthService{
                 password
             })
         }).then(res=> {
-            this.setToken(res.token);
+            this.setToken(res.auth_token);
             return Promise.resolve(res);
         })
     }
@@ -54,12 +74,14 @@ export default class AuthService{
 
     loggedIn(){
         const token = this.getToken();
-        return !!token && !this.tokenExpired()
+        return !!token && !this.isTokenExpired()
     }
+
     isTokenExpired(token){
         try{
             const decoded = decode(token);
-            if (decoded.exp < Date.now() /1000){
+            debugger
+            if (decoded.exp < new Date().getTime()/ 1000){
                 return true;
             }else{
                 return false;
@@ -74,6 +96,7 @@ export default class AuthService{
     }
 
     getProfile(){
+        debugger
         return decode(this.getToken());
     }
 

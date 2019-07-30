@@ -14,16 +14,25 @@ class RegisterAPI(MethodView):
         user = Users.query.filter_by(username=post_data.get('username')).first()
         if not user:
             try:
-                user = Users(**post_data)
-                db.session.add(user)
-                db.session.commit()
-                # now generate the auth token
-                auth_token = user.encode_auth_token(user.id)
-                response_object = {'status': 'success',
-                                  'message': 'Successfully Registered',
-                                  'auth_token': auth_token.decode()
-                                  }
-                return make_response(jsonify(response_object)), 201
+                if post_data['password'] == post_data['r_password']:
+                    post_data.pop('r_password')
+                    post_data['joined_site'] = datetime.today().date()
+                    user = Users(**post_data)
+                    db.session.add(user)
+                    db.session.commit()
+                    # now generate the auth token
+                    auth_token = user.encode_auth_token(user.id)
+                    response_object = {'status': 'success',
+                                      'message': 'Successfully Registered',
+                                      'auth_token': auth_token.decode()
+                                      }
+                    return make_response(jsonify(response_object)), 201
+                else:
+                    response_object = {
+                        'status': 'fail',
+                        'message': 'Passwords do not match'
+                    }
+                    return make_response(jsonify(response_object)), 401
             except Exception as e:
                 response_object = {
                     'status': 'fail',

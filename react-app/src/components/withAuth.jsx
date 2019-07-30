@@ -13,17 +13,21 @@ export default function withAuth(AuthComponent){
         }
         componentWillMount(){
             if(!Auth.loggedIn()){
+                debugger
                 this.props.history.replace('/login');
             }
             else{
                 try{
+                    debugger
                     const profile = Auth.getProfile();
                     this.setSate({
                         user:profile
                     })
                 }catch(err){
                     Auth.logout();
+                    debugger
                     this.props.hisotry.replace('/login');
+                    debugger
                 }
             }
         }

@@ -1,10 +1,18 @@
 import React, {Component} from 'react';
-
-
+import {connect} from 'react-redux';
 import './register.css';
-import { PostData } from '../../services/PostData';
+import { userSignupRequest } from '../../services/userSignupRequest';
+import AuthService from '../../services/AuthService';
+import PropTypes from 'prop-types';
 
 class Register extends Component{
+
+    constructor(){
+        super();
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.AuthService = new AuthService()
+    }
 
     state = {
         first_name: "", 
@@ -17,10 +25,19 @@ class Register extends Component{
         educational_attainment: "",
     }
 
+    componentWillMount(){
+        if(this.AuthService.loggedIn()){
+            this.props.history.replace('/')
+        }
+    }
+
     handleSubmit = (e) => {
         e.preventDefault();
-        PostData('register', this.state).then((result) => {
-            let response = result;
+        debugger
+        this.AuthService.register({...this.state}).then(res => {
+            this.props.history.replace('/')
+        }).catch(err => {
+            alert(err);
         })
     }
 
@@ -118,4 +135,10 @@ class Register extends Component{
     }
 }
 
-export default Register;
+Register.propTypes = {
+    userSignupRequest: PropTypes.func.isRequired,
+
+}
+
+
+export default connect( null , {userSignupRequest} )(Register);

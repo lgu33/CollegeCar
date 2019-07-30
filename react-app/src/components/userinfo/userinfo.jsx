@@ -4,6 +4,8 @@ import tempImg from './tempuser.png';
 import birds from './birds.JPG';
 import './userinfo.css'
 import nik from './nik.JPG';
+import withAuth from '../withAuth';
+import {withRouter} from 'react-router';
 
 //https://www.w3schools.com/cssref/css_selectors.asp
 

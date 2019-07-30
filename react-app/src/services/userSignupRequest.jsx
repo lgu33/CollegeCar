@@ -1,4 +1,4 @@
-export function PostData(type, userData){
+export function userSignupRequest(type, userData){
     let BaseUrl = 'http://127.0.0.1:5000/';
 
     return new Promise((resolve, rejest)=>{

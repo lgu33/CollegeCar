@@ -1,8 +1,9 @@
 import React, {Component, useEffect} from 'react';
 import { connect } from 'react-redux';
-import {PostData} from '../../services/PostData';
 import AuthService from '../../services/AuthService';
 import './login.css';
+
+// thunk asynchronous actions
 
 class Login extends Component{
     constructor(){
@@ -77,10 +78,6 @@ class Login extends Component{
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        auth: state.auth.users  
-    }
-}
 
-export default connect(mapStateToProps)(Login);
+
+export default Login;

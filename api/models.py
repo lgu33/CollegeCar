@@ -98,8 +98,6 @@ class BlacklistToken(db.Model):
             return False
 
 
-
-
 class Comments(db.Model):
 
     __tablename__ = "Comments"
