@@ -1,7 +1,8 @@
 import React, {Component, useEffect} from 'react';
 import { connect } from 'react-redux';
-import AuthService from '../../services/AuthService';
+import { login } from '../../actions/authActions';
 import './login.css';
+import PropTypes from 'prop-types';
 
 // thunk asynchronous actions
 
@@ -10,26 +11,18 @@ class Login extends Component{
         super();
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.AuthService = new AuthService()
     }
     state ={
         username:"",
         password:"",
     }
     
-    componentWillMount(){
-        if(this.AuthService.loggedIn()){
-            this.props.history.replace('/')
-        }
-    }
-
     handleSubmit = (e) => {
         e.preventDefault();
-        this.AuthService.login(this.state.username, this.state.password).then(res => {
-            this.props.history.replace('/')
-        }).catch(err => {
-            alert(err);
-        })
+        debugger
+        this.props.login(this.state).then(
+            (res) => this.props.history.push('/'),
+        );
     }
 
     handleChange = (e) => {
@@ -78,6 +71,9 @@ class Login extends Component{
     }
 }
 
+Login.propTypes = {
+    login: PropTypes.func.isRequired
+  }
+  
 
-
-export default Login;
+export default connect(null, {login})(Login);

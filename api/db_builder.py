@@ -34,7 +34,6 @@ def split_data_by_relation():
     uni_data_range = list(range(23, 99))
     university_columns = [0, 1, 2, 3, 8, 9, 11, 12, 13, 14, 15] + uni_data_range
     university_data = data.iloc[:, university_columns]
-
     return
 
 

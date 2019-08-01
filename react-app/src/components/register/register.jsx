@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import './register.css';
-import { userSignupRequest } from '../../services/userSignupRequest';
-import AuthService from '../../services/AuthService';
 import PropTypes from 'prop-types';
+import { register } from '../../actions/authActions';
 
 class Register extends Component{
 
@@ -11,7 +10,6 @@ class Register extends Component{
         super();
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.AuthService = new AuthService()
     }
 
     state = {
@@ -25,16 +23,10 @@ class Register extends Component{
         educational_attainment: "",
     }
 
-    componentWillMount(){
-        if(this.AuthService.loggedIn()){
-            this.props.history.replace('/')
-        }
-    }
-
     handleSubmit = (e) => {
         e.preventDefault();
         debugger
-        this.AuthService.register({...this.state}).then(res => {
+        this.props.register(this.state).then(res => {
             this.props.history.replace('/')
         }).catch(err => {
             alert(err);
@@ -136,9 +128,8 @@ class Register extends Component{
 }
 
 Register.propTypes = {
-    userSignupRequest: PropTypes.func.isRequired,
-
+    register: PropTypes.func.isRequired,
 }
 
 
-export default connect( null , {userSignupRequest} )(Register);
+export default connect( null , {register } )(Register);
