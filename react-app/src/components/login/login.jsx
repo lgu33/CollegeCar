@@ -19,10 +19,12 @@ class Login extends Component{
     
     handleSubmit = (e) => {
         e.preventDefault();
-        debugger
-        this.props.login(this.state).then(
-            (res) => this.props.history.push('/'),
-        );
+        this.props.login(this.state).then(res => {
+            this.props.history.push('/')
+        }).catch(err => {
+            alert(err);
+        })
+
     }
 
     handleChange = (e) => {

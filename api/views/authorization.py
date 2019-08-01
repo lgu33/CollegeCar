@@ -66,6 +66,10 @@ class LoginAPI(MethodView):
                         'status': 'success',
                         'message': 'Successful Login',
                         'auth_token': auth_token.decode(),
+                        'first_name': user.first_name,
+                        'last_name': user.last_name,
+                        'username': user.username,
+                        'email': user.email,
                     }
                     return make_response(jsonify(response_object)), 200
             else:

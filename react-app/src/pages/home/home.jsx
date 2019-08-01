@@ -9,6 +9,7 @@ import Login from '../../components/login/login';
 import Register from '../../components/register/register';
 import UserInfo from '../../components/userinfo/userinfo';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import requireAuth from '../../utils/requireAuth';
 
 class Home extends Component{
 
@@ -21,8 +22,8 @@ class Home extends Component{
                         <div className="container">
                             <Route path="/register" exact component={Register}/>
                             <Route path="/login" exact component={Login}/>
-                            <Route path="/" exact component={UserInfo}/>
-                            <Route path="/user/:id" exact component={UserInfo}/>
+                            <Route path="/" exact component={requireAuth(UserInfo)}/>
+                            <Route path="/user/:id" exact component={requireAuth(UserInfo)}/>
                         </div>
                     </Switch> 
                 </div>

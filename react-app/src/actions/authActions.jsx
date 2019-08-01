@@ -8,7 +8,7 @@ import { SET_CURRENT_USER } from './types';
 export function setCurrentUser(user) {
   return {
     type: SET_CURRENT_USER,
-    user
+    user: user,
   };
 }
 
@@ -27,6 +27,7 @@ export function login(data) {
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
       dispatch(setCurrentUser(jwtDecode(token)));
+      console.log(jwtDecode(token))
     });
   }
 }
@@ -38,6 +39,7 @@ export function register(data) {
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
       dispatch(setCurrentUser(jwtDecode(token)));
+      console.log(jwtDecode(token))
     });
   }
 }

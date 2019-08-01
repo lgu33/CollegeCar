@@ -25,7 +25,6 @@ class Register extends Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        debugger
         this.props.register(this.state).then(res => {
             this.props.history.replace('/')
         }).catch(err => {
