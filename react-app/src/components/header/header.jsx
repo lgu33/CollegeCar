@@ -52,13 +52,18 @@ class Header extends Component{
                                 <a className="dropdown-item" onClick={this.logout.bind(this)}>Log Out</a>
                             </div>
                 </li>
+                &nbsp;
+                &nbsp;
             </div>
         );
 
         const userSearchForm = (
             <form className="form-inline">
-                        <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Quick Search"></input>
-                        <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        <input className="form-control mr-sm-2" type="search" placeholder="Quick Search" aria-label="Search" style={{width:"15vw"}}></input>
+                        <span className="fa fa-search fa-2x" type="submit" style={{color:"#DDDD;", backgroundColor: "#f8f9fa", borderColor: "#f8f9fa"}}></span>
+                        &nbsp;
+                        &nbsp;
+                        &nbsp;
             </form>
         );
 

@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/api/db_builder.py" line="160" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="5882837d-bd88-4c72-b2f1-fbffb3a4b1c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/CollegeCar.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/CollegeCar.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/data/mapped_data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/api/data/mapped_data.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/db_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/db_builder.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/src/components/header/header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/header/header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/pages/home/home.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,32 +17,32 @@
     <session id="-1494494528">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="34" />
-          <entry key="py" value="3289" />
+          <entry key="Python Console" value="51" />
+          <entry key="py" value="4499" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="3323" />
+          <entry key="Python" value="4550" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="csv" value="3" />
-          <entry key="py" value="14" />
+          <entry key="csv" value="6" />
+          <entry key="py" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="14" />
+          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="Python" value="23" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="102">
@@ -67,31 +63,31 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/db_builder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="110" column="42" selection-start-line="110" selection-start-column="42" selection-end-line="110" selection-end-column="42" />
+            <state relative-caret-position="172">
+              <caret line="214" selection-start-line="214" selection-end-line="214" />
               <folding>
                 <element signature="e#0#19#0" expanded="true" />
-                <marker date="1564723318831" expanded="true" signature="1069:1184" ph="..." />
-                <marker date="1564723318831" expanded="true" signature="3071:3435" ph="..." />
+                <marker date="1564754044852" expanded="true" signature="1156:1271" ph="..." />
+                <marker date="1564754044852" expanded="true" signature="3131:3495" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sqlalchemy/engine/base.py">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/api/data/university_image_links.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="1641" selection-start-line="1641" selection-end-line="1641" />
+            <state relative-caret-position="-867">
+              <caret line="101" column="30" lean-forward="true" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sqlalchemy/engine/__init__.py">
+        <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/google_images_download/google_images_download.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
-              <caret line="423" selection-start-line="423" selection-end-line="423" />
+            <state relative-caret-position="251">
+              <caret line="952" selection-start-line="952" selection-end-line="952" />
             </state>
           </provider>
         </entry>
@@ -133,6 +129,19 @@
     <findStrings>
       <find>deve</find>
       <find>test_decode_auth_token</find>
+      <find>link</find>
+      <find>image_url</find>
+      <find>no_download</find>
+      <find>save_source</find>
+      <find>print_url</find>
+      <find>URL</find>
+      <find>download</find>
+      <find>Image URL:</find>
+      <find>download_image</find>
+      <find>_get_all_items</find>
+      <find>google.com</find>
+      <find>NO</find>
+      <find>no iMAGE FOUND</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -155,13 +164,14 @@
         <option value="$PROJECT_DIR$/api/views/authorization.py" />
         <option value="$PROJECT_DIR$/api/models.py" />
         <option value="$PROJECT_DIR$/api/config.py" />
+        <option value="$USER_HOME$/Anaconda3/Lib/site-packages/google_images_download/google_images_download.py" />
         <option value="$PROJECT_DIR$/api/db_builder.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="939" />
-    <option name="width" value="1628" />
+    <option name="x" value="775" />
+    <option name="width" value="1792" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -379,16 +389,16 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="939" y="0" width="1628" height="1047" extended-state="0" />
+    <frame x="775" y="0" width="1792" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8460177" visible="true" weight="0.21761006" />
-      <window_info id="Structure" order="1" sideWeight="0.1539823" side_tool="true" visible="true" weight="0.21761006" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.8248062" visible="true" weight="0.1972634" />
+      <window_info id="Structure" order="1" sideWeight="0.1751938" side_tool="true" visible="true" weight="0.1972634" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.381161" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.36911282" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2935378" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.36692223" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -438,47 +448,47 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>db_conn.scalar(users.count())</expression-string>
+        <expression-string>master_df.to_csv(os.path.join(data_path, 'university_image_links.csv'))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>db_conn.execute(users.count())</expression-string>
+        <expression-string>row[]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>engine.execute('SELECT COUNT(id) FROM Users')</expression-string>
+        <expression-string>row</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>engine.execute('SELECT COUNT(id) from Users')</expression-string>
+        <expression-string>master_df</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>engine.execute('select count(id) from Users')</expression-string>
+        <expression-string>master_df = master_df.append(row)</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>record</expression-string>
+        <expression-string>link[0][name][0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>users.columns</expression-string>
+        <expression-string>link[0][name]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>users.cols</expression-string>
+        <expression-string>link[0]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>users</expression-string>
+        <expression-string>link</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -640,17 +650,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sqlalchemy/engine/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="423" selection-start-line="423" selection-end-line="423" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sqlalchemy/engine/default.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="183">
           <caret line="506" selection-start-line="506" selection-end-line="506" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -661,22 +671,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/sqlalchemy/engine/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="423" selection-start-line="423" selection-end-line="423" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/_pydev_imps/_pydev_execfile.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/urllib/parse.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1884">
+          <caret line="746" column="4" selection-start-line="746" selection-start-column="4" selection-end-line="746" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Anaconda3/Lib/site-packages/google_images_download/google_images_download.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="952" selection-start-line="952" selection-end-line="952" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/api/db_builder.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="110" column="42" selection-start-line="110" selection-start-column="42" selection-end-line="110" selection-end-column="42" />
+        <state relative-caret-position="172">
+          <caret line="214" selection-start-line="214" selection-end-line="214" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
-            <marker date="1564723318831" expanded="true" signature="1069:1184" ph="..." />
-            <marker date="1564723318831" expanded="true" signature="3071:3435" ph="..." />
+            <marker date="1564754044852" expanded="true" signature="1156:1271" ph="..." />
+            <marker date="1564754044852" expanded="true" signature="3131:3495" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run.py">
+    <entry file="file://$PROJECT_DIR$/api/data/university_image_links.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        <state relative-caret-position="-867">
+          <caret line="101" column="30" lean-forward="true" selection-start-line="101" selection-start-column="30" selection-end-line="101" selection-end-column="30" />
         </state>
       </provider>
     </entry>

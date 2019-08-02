@@ -7,8 +7,8 @@ from weather import Weather, Unit
 from sqlalchemy import create_engine
 from sqlalchemy.sql import table, column, select, update, insert, func
 from sqlalchemy import MetaData, Table, Column, Integer, Date, String
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.ext.declarative import declarative_base
+from google_images_download import google_images_download
+import urllib
 
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -23,6 +23,11 @@ POSTGRES_LOCAL_BASE = "postgresql://{username}:{password}@localhost:{port}/{db_n
 
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 data_path = os.path.join(curr_dir, 'data')
+
+
+def get_mapped_data():
+    path = os.path.join(data_path, 'mapped_data.xlsx')
+    return pd.read_excel(path)
 
 
 def create_db_conn():
@@ -86,8 +91,7 @@ def add_users_to_db(db_conn, engine):
     """
 
     metadata = MetaData(engine)
-    users = Table('Users', metadata, autoload=True,
-                           autoload_with=engine)
+    users = Table('Users', metadata, autoload=True, autoload_with=engine)
 
     # Get table information
     user_file_path = os.path.join(data_path, 'users.csv')
@@ -155,15 +159,75 @@ def split_data_local(data):
     return location_data
 
 
-# mapped_data_path = os.path.join(data_path, 'mapped_data.xlsx')
-# df_mapped_data = pd.read_excel(mapped_data_path)
-#
+def get_image_url(query):
+    # keywords is the search query
+    # format is the image file format
+    # limit is the number of images to be downloaded
+    # print urs is to print the image file url
+    # size is the image size which can
+    # be specified manually ("large, medium, icon")
+    # aspect ratio denotes the height width ratio
+    # of images to download. ("tall, square, wide, panoramic")
+    response = google_images_download.googleimagesdownload()
+    arguments = {"keywords": query,
+                 "no_download": True,
+                 "format": "jpg",
+                 "limit": 1,
+                 "print_urls": True,
+                 "size": "large",
+                 "aspect_ratio": "panoramic"}
+
+    res = 'NO IMAGE FOUND'
+    try:
+        res = response.download(arguments)
+
+        # Handling File NotFound Error
+    except FileNotFoundError:
+        arguments = {"keywords": query,
+                     "format": "jpg",
+                     "limit": 1,
+                     "print_urls": True,
+                     "size": "large"}
+
+        # Providing arguments for the searched query
+        try:
+            # Downloading the photos based
+            # on the given arguments
+            res = response.download(arguments)
+        except:
+            pass
+
+    return res
+
+
+def create_image_links(data):
+    df_university_uid_data = data[['id', 'ope8_id', 'name']]
+    master_df = pd.DataFrame()
+    for id, row in df_university_uid_data.iterrows():
+        name = row['name'].lower()
+        link = get_image_url(name.lower())
+        try:
+            row['campus_photo'] = link[0][name][0]
+        except IndexError as e:
+            row['campus_photo'] = 'NO IMAGE FOUND'
+        master_df = master_df.append(row)
+    master_df.to_csv(os.path.join(data_path, 'university_image_links.csv'))
+
+
+# db_conn, engine = create_db_conn()
+df_mapped_data = get_mapped_data()
+create_image_links(df_mapped_data)
+
+
 # df_university_table = split_data_university_table(df_mapped_data)
 # df_location_table = split_data_local(df_mapped_data)
-
-db_conn, engine = create_db_conn()
 # build_user_profiles()
-add_users_to_db(db_conn, engine)
+# add_users_to_db(db_conn, engine)
 
+
+# code to download images
+# f = open('00000001.jpg','wb')
+# f.write(urllib.urlopen('http://www.gunnerkrigg.com//comics/00000001.jpg').read())
+# f.close()
 
 
