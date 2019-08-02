@@ -10,7 +10,7 @@
 
 .tab-card {
     border:1px solid #eee;
-    width: 25vw;
+    min-width: 100%;
 }
 
 .tab-card-header {
@@ -47,12 +47,30 @@
 }
 
 .row-custom{
-    background-color:rgb(255, 255, 255, 0.6);
-    border: 0px solid;
-    border-color: #737373;
-    padding: 2%;
+  background-color:rgb(255, 255, 255, 0.6);
+  border: 0px solid;
+  border-color: #737373;
+  padding: 2%;
 }
 
 .stacked{
-    margin-top: 0.5em;
+  margin-top: 0.5em;
+}
+
+.custom-col{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0px;
+}
+
+.university-image{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 100%;
+  
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
