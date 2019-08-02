@@ -1,8 +1,9 @@
-import React, {Component, useEffect} from 'react';
+import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/authActions';
 import './login.css';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 
 // thunk asynchronous actions
 
@@ -12,6 +13,13 @@ class Login extends Component{
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    
+    componentDidMount(){
+        if(this.props.isAuthenticated){
+            this.props.history.push('/')
+        }
+    }
+
     state ={
         username:"",
         password:"",
@@ -58,11 +66,10 @@ class Login extends Component{
                                     <button type="submit" className="btn btn-primary">
                                         Login
                                     </button>
-                                    
-                                    <a href="#" className="btn btn-link">
-                                        Forgot Your Password?
-                                    </a>
                                 </div>
+                                <Link to='/register' className='btn btn-link'>
+                                    Not a user? Register Here.
+                                </Link>
                             </form>
                         </div>
                     </div>

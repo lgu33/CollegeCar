@@ -8,13 +8,11 @@ export default function(ComposedComponent){
             if(!this.props.isAuthenticated){
                 //add flash message
                 this.props.history.push('/login');
-            }else{
-                
             }
         }
 
         componentWillUpdate(nextProps){
-            this.props.history.push('/register')
+            this.props.history.push('/login')
         }
 
         render(){

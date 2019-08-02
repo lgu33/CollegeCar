@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5882837d-bd88-4c72-b2f1-fbffb3a4b1c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/api/views/authorization.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views/authorization.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/actions/authActions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/actions/authActions.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/react-app/src/components/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/login/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/store/reducers/authReducer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/store/reducers/authReducer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-app/src/utils/requireAuth.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/utils/requireAuth.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,7 +38,7 @@
         <entry file="file://$PROJECT_DIR$/api/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="262">
-              <caret line="44" column="30" lean-forward="true" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+              <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
               </folding>
@@ -538,7 +535,7 @@
     <entry file="file://$PROJECT_DIR$/api/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="262">
-          <caret line="44" column="30" lean-forward="true" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
+          <caret line="44" column="30" selection-start-line="44" selection-start-column="30" selection-end-line="44" selection-end-column="30" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
