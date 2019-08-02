@@ -14,7 +14,7 @@ import os
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 USERNAME = "postgres"
 PASSWORD = "admin"
-PORT = 5432
+PORT = 5433
 DB_NAME = "CollegeCardDB"
 POSTGRES_LOCAL_BASE = "postgresql://{username}:{password}@localhost:{port}/".format(username=USERNAME,
                                                                                     password=PASSWORD,
