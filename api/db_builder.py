@@ -57,8 +57,9 @@ def split_data_local(data):
     weather = Weather(Unit.CELSIUS)
     for index, row in location_data.iterrows():
         longitude, latitude = row['location.lon'], row['location.lat']
-        lookup = weather.lookup_by_latlng(latitude, longitude)
+        lookup = weather.lookup_by_location('Dublin')
         curr_weather = lookup.condition
+        row['carnegie_basic'] = curr_weather;
 
     return location_data
 
@@ -67,6 +68,5 @@ mapped_data_path = os.path.join(data_path, 'mapped_data.xlsx')
 df_mapped_data = pd.read_excel(mapped_data_path)
 
 #df_university_table = split_data_university_table(df_mapped_data)
-df_location_table = split_data_local(df_mapped_data)
+#df_location_table = split_data_local(df_mapped_data)
 
-print()
