@@ -8,6 +8,8 @@ import Header from '../../components/header/header';
 import Login from '../../components/login/login';
 import Register from '../../components/register/register';
 import UserInfo from '../../components/userinfo/userinfo';
+import Search from '../../components/search/search';
+import SearchPage from '../../components/search/search_page';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 class Home extends Component{
@@ -16,18 +18,20 @@ class Home extends Component{
         return(
             <Router>
                 <div className="appWrap">
-                <Header />
+                    <Header />
                     <Switch>
                         <div className="container">
                             <Route path="/register" exact component={Register}/>
                             <Route path="/login" exact component={Login}/>
-                            <Route path="/" exact component={UserInfo}/>
+                            <Route path="/" exact component={Search}/>
+                            <Route path="/searchpage" exact component={SearchPage}/>
+                            <Route path="/userinfo" exact component={UserInfo}/>
                             <Route path="/user/:id" exact component={UserInfo}/>
                         </div>
-                    </Switch> 
+                    </Switch>
                 </div>
             </Router>
-            
+
         );
     }
 }
