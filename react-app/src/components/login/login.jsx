@@ -28,11 +28,10 @@ class Login extends Component{
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.login(this.state).then(res => {
-            this.props.history.push('/')
+            this.props.history.push('/profile')
         }).catch(err => {
             alert(err);
         })
-
     }
 
     handleChange = (e) => {
@@ -82,7 +81,7 @@ class Login extends Component{
 
 Login.propTypes = {
     login: PropTypes.func.isRequired
-  }
+}
   
 
 export default connect(null, {login})(Login);

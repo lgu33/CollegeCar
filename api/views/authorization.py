@@ -105,6 +105,7 @@ class UserAPI(MethodView):
                 return make_response(jsonify(response_object)), 401
         else:
             auth_token = ''
+
         if auth_token:
             resp = Users.decode_auth_token(auth_token)
             if not isinstance(resp, str):

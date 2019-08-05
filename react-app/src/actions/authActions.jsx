@@ -1,15 +1,30 @@
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import decode from 'jwt-decode';
-import base64 from 'react-native-base64'
 import setAuthorizationToken from '../utils/setAuthorizationToken';
-import { SET_CURRENT_USER } from './types';
+import { SET_CURRENT_USER, GET_USER_PROFILE } from './types';
 
 export function setCurrentUser(user) {
   return {
     type: SET_CURRENT_USER,
     user: user,
   };
+}
+
+export function setUserProfile(user) {
+  return {
+    type: GET_USER_PROFILE,
+    user: user,
+  };
+}
+
+export function getCurrentUserProfile(data){
+  return dispatch => {
+    axios.get('/auth/status', data).then(res => {
+      dispatch(setUserProfile(res.data));
+    }).catch(function (error){
+      console.log(error)
+    })
+  }
 }
 
 export function logout() {
@@ -27,7 +42,6 @@ export function login(data) {
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
       dispatch(setCurrentUser(jwtDecode(token)));
-      console.log(jwtDecode(token))
     });
   }
 }
@@ -39,7 +53,6 @@ export function register(data) {
       localStorage.setItem('jwtToken', token);
       setAuthorizationToken(token);
       dispatch(setCurrentUser(jwtDecode(token)));
-      console.log(jwtDecode(token))
     });
   }
 }

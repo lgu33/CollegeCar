@@ -8,7 +8,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.sql import table, column, select, update, insert, func
 from sqlalchemy import MetaData, Table, Column, Integer, Date, String
 from google_images_download import google_images_download
-import urllib
 
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -214,15 +213,15 @@ def create_image_links(data):
     master_df.to_csv(os.path.join(data_path, 'university_image_links.csv'))
 
 
-# db_conn, engine = create_db_conn()
-df_mapped_data = get_mapped_data()
-create_image_links(df_mapped_data)
+db_conn, engine = create_db_conn()
+# df_mapped_data = get_mapped_data()
+# create_image_links(df_mapped_data)
 
 
 # df_university_table = split_data_university_table(df_mapped_data)
 # df_location_table = split_data_local(df_mapped_data)
 # build_user_profiles()
-# add_users_to_db(db_conn, engine)
+add_users_to_db(db_conn, engine)
 
 
 # code to download images

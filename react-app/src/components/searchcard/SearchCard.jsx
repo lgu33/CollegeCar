@@ -58,7 +58,7 @@ class SearchCard extends Component{
 
             <div className="row row-custom">
             <div className="d-flex p-2"></div>
-                <div className="row"><h1 className="center-align">University of Wisconsin - Madison</h1></div>
+                <div className="row"><h2 className="center-align">University of Wisconsin - Madison</h2></div>
                 <div className="row">
                     <div className="col-xs-4 col-lg-4 custom-col">
                         <img src={uw_img} className="img-responsive university-image"></img>
