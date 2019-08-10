@@ -106,6 +106,8 @@ def add_users_to_db(db_conn, engine):
     db_conn.close()
 
 
+
+
 def map_db_dataset():
     """
     - A FUNCTION TO READ IN DATA FROM COLLEGE SCORE CARD AND MAP THE RESPECTIVE COLUMN HEADINGS
@@ -135,27 +137,13 @@ def split_data_university_table(data):
 
     uni_data_range = list(range(23, 99))
     university_columns = [0, 1, 2, 3, 8, 9, 11, 12, 13, 14, 15] + uni_data_range
+
+    university_columns = [0, 1, 2, 3, 4, 8, 9]
     university_data = data.iloc[:, university_columns]
-
+    file_path = os.path.join(data_path, 'universities.csv')
+    del university_data['Unnamed: 0']
+    university_data.to_csv(file_path, index=False)
     return university_data
-
-
-def split_data_local(data):
-    """
-    A FUNCTION FOR READING IN THE MAPPED DATA (MAPPED_DATA.XLSX...PLEASE SEE FUNCTION ABOVE IF YOU DO NOT
-    HAVE THE FILE) AND SPLITTING THE DATA ONLY TO PRESERVE THOSE NECESSARY FOR LOCATION. ALSO THIS FUNCTION
-    LOOKS UP THE WEATHER DATA
-    :return: data table for location
-    """
-    data_range = [0, 1, 2] + list(range(17, 25))
-    location_data = data.iloc[:, data_range]
-    weather = Weather(Unit.CELSIUS)
-    for index, row in location_data.iterrows():
-        longitude, latitude = row['location.lon'], row['location.lat']
-        lookup = weather.lookup_by_latlng(latitude, longitude)
-        curr_weather = lookup.condition
-
-    return location_data
 
 
 def get_image_url(query):
@@ -224,9 +212,12 @@ db_conn, engine = create_db_conn()
 add_users_to_db(db_conn, engine)
 
 
-# code to download images
-# f = open('00000001.jpg','wb')
-# f.write(urllib.urlopen('http://www.gunnerkrigg.com//comics/00000001.jpg').read())
-# f.close()
+mapped_data_path = os.path.join(data_path, 'mapped_data.xlsx')
+df_mapped_data = pd.read_excel(mapped_data_path)
 
+split_data_university_table(df_mapped_data)
+
+
+#df_university_table = split_data_university_table(df_mapped_data)
+#df_location_table = split_data_local(df_mapped_data)
 

@@ -8,6 +8,7 @@ data_path = os.path.join(curr_dir, 'data')
 
 mapped_data_path = os.path.join(data_path, 'mapped_data.xlsx')
 df_mapped_data = pd.read_excel(mapped_data_path)
+random_users_path = os.path.join(data_path, 'users.csv')
 
 
 class Base:
@@ -18,6 +19,7 @@ class Base:
         self.PASSWORD = "admin"
         self.PORT = 5432
         self.DB_NAME = "CollegeCardDB"
+
         self.POSTGRES_LOCAL_BASE = "postgresql://{username}:{password}@localhost:{port}/{db_name}".format(username=self.USERNAME,
                                                                                                      password=self.PASSWORD,
                                                                                                      port=self.PORT,
@@ -140,36 +142,38 @@ class Comments(Base):
 
 
 class University(Base):
+
     def __init__(self):
         super().__init__()
         # self.conn.execute("DROP TABLE universities;")
-
         try:
             self.conn.execute(
                 "CREATE TABLE universities (id integer PRIMARY KEY, ope8_id integer, ope6_id integer,name VARCHAR(500), accreditor text, school_url text);")
         except ProgrammingError:
             print("TABLE ALREADY EXISTS")
 
-        def import_db(self):
-            # self.conn.execute("DROP TABLE universities;")
-            file_path = os.path.join(data_path, 'universities.csv')
-            with open(file_path, 'r') as f:
-                connection = self.engine.raw_connection()
-                cursor = connection.cursor()
-                cols = "id,ope8_id,ope6_id,name,accreditor,school_url"
+    def import_db(self):
+        #self.conn.execute("DROP TABLE universities;")
+        file_path = os.path.join(data_path, 'universities.csv')
+        with open(file_path, 'r') as f:
+            connection = self.engine.raw_connection()
+            cursor = connection.cursor()
+            cols = "id,ope8_id,ope6_id,name,accreditor,school_url"
             cmd = 'COPY universities({cols}) FROM STDIN WITH (FORMAT CSV, HEADER TRUE)'.format(cols=cols)
             cursor.copy_expert(cmd, f)
             connection.commit()
 
-        def insert(self):
-            self.conn.execute("INSERT INTO universities (uname, description)"
-                              "VALUES ('biubfewk', 'dkl  csd');")
-            self.conn.execute("INSERT INTO universities (uname, description)"
-                              "VALUES ('iurfif', 'dkl  csd');")
+    def insert(self):
+        self.conn.execute("INSERT INTO universities (uname, description)"
+        "VALUES ('biubfewk', 'dkl  csd');")
+        self.conn.execute("INSERT INTO universities (uname, description)"
+                          "VALUES ('iurfif', 'dkl  csd');")
+
 
 
 university = University()
 university.import_db()
+
 
 users = Users()
 users.get_users_joined_before_date('2019-08-01')
