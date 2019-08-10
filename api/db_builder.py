@@ -37,10 +37,11 @@ def split_data_university_table(data):
     :return:
     """
 
-    uni_data_range = list(range(23, 99))
-    university_columns = [0, 1, 2, 3, 8, 9, 11, 12, 13, 14, 15] + uni_data_range
+    university_columns = [0, 1, 2, 3, 4, 8, 9]
     university_data = data.iloc[:, university_columns]
-
+    file_path = os.path.join(data_path, 'universities.csv')
+    del university_data['Unnamed: 0']
+    university_data.to_csv(file_path, index=False)
     return university_data
 
 
@@ -66,6 +67,8 @@ def split_data_local(data):
 
 mapped_data_path = os.path.join(data_path, 'mapped_data.xlsx')
 df_mapped_data = pd.read_excel(mapped_data_path)
+
+split_data_university_table(df_mapped_data)
 
 #df_university_table = split_data_university_table(df_mapped_data)
 #df_location_table = split_data_local(df_mapped_data)
