@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5882837d-bd88-4c72-b2f1-fbffb3a4b1c6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/data/mapped_data.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/api/data/mapped_data.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/db_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/db_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/views/authorization.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/views/authorization.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/actions/auth.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/actions/authActions.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/actions/authActions.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/actions/types.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/actions/types.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/components/login/login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/login/login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/components/searchcard/SearchCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/searchcard/SearchCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/components/userinfo/userinfo.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/components/userinfo/userinfo.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/pages/home/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-app/src/store/reducers/rootReducer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-app/src/store/reducers/rootReducer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/db_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/api/db_script.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -72,29 +60,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/db_script.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-334">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="180">
+              <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/data/users.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/default.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-13">
-              <caret line="495" column="45" lean-forward="true" selection-start-line="495" selection-start-column="45" selection-end-line="495" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -399,13 +369,13 @@
     <frame x="0" y="23" width="1280" height="747" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8355856" visible="true" weight="0.13264495" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8355856" visible="true" weight="0.21604449" />
       <window_info id="Structure" order="1" sideWeight="0.16441442" side_tool="true" weight="0.13264495" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32968238" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.35877863" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.10381679" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.082442746" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -493,47 +463,47 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
-        <expression-string>cursor.commit()</expression-string>
+        <expression-string>[i for i in res]</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.conn.commit()</expression-string>
+        <expression-string>res</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.engine</expression-string>
+        <expression-string>r</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.engine.commit()</expression-string>
+        <expression-string>res = self.conn.execute(&quot;SELECT * FROM users WHERE joined_site &gt;= '{date}'&quot;.format(date=date))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.engine.raw_connection().cursor()</expression-string>
+        <expression-string>self.conn.execute(&quot;SELECT * FROM users WHERE joined_site &gt;= '{date}'&quot;.format(date=date))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.engine.raw_connection()</expression-string>
+        <expression-string>self.conn.execute(&quot;SELECT * FROM users WHERE TO_DATE(joined_site) &gt;= TO_DATE({date})&quot;.format(date=date))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.engine.cursor()</expression-string>
+        <expression-string>self.conn.execute(&quot;SELECT * FROM users WHERE joined_site &gt;= TO_DATE({date})&quot;.format(date=date))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>self.conn.cursor()</expression-string>
+        <expression-string>self.conn.execute(&quot;SELECT * FROM users WHERE joined_site &gt;= {date}&quot;.format(date=date))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>df.to_dict(orient='records')</expression-string>
+        <expression-string>self.conn.execute(&quot;SELECT * FROM users WHERE joined_site::date &gt;= {date}&quot;.format(date=date))</expression-string>
         <language-id>Python</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
@@ -739,17 +709,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/default.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-13">
-          <caret line="495" column="45" lean-forward="true" selection-start-line="495" selection-start-column="45" selection-end-line="495" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/pandas/core/frame.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83">
           <caret line="421" selection-start-line="421" selection-end-line="421" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda3/lib/python3.7/site-packages/sqlalchemy/engine/default.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="233">
+          <caret line="508" selection-start-line="508" selection-end-line="508" />
         </state>
       </provider>
     </entry>
@@ -762,8 +732,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/api/db_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-334">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="180">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
