@@ -10,7 +10,9 @@ import Register from '../../components/register/register';
 //import UserInfo from '../../components/userinfo/userinfo';
 import requireAuth from '../../utils/requireAuth';
 import SearchCard from '../../components/searchcard/SearchCard';
-
+import UserInfo from '../../components/userinfo/userinfo';
+import Search from '../../components/search/search';
+import SearchPage from '../../components/search/search_page';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
@@ -20,19 +22,21 @@ class Home extends Component{
         return(
             <Router>
                 <div className="appWrap">
-                <Header />
+                    <Header />
                     <Switch>
                         <div className="container">
                             <Route path="/register" exact component={Register}/>
                             <Route path="/login" exact component={Login}/>
                             <Route path="/" exact component={SearchCard}/>
-                            
                             <Route path="/scard" exact component={SearchCard} />
+                            <Route path="/" exact component={Search}/>
+                            <Route path="/searchpage" exact component={SearchPage}/>
+                            <Route path="/userinfo" exact component={UserInfo}/>
+                            <Route path="/user/:id" exact component={UserInfo}/>
                         </div>
-                    </Switch> 
+                    </Switch>
                 </div>
             </Router>
-            
         );
     }
 }
