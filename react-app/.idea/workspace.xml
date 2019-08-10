@@ -21,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pages/home/home.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="402">
-              <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+            <state relative-caret-position="300">
+              <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
               <folding>
                 <element signature="e#139#191#0" expanded="true" />
                 <element signature="e#362#412#0" expanded="true" />
@@ -118,6 +118,11 @@
               <item name="react-app" type="b2602c69:ProjectViewProjectNode" />
               <item name="react-app" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="react-app" type="b2602c69:ProjectViewProjectNode" />
+              <item name="react-app" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -158,12 +163,12 @@
       <workItem from="1564690975571" duration="5584000" />
       <workItem from="1564699110199" duration="1578000" />
       <workItem from="1564960233033" duration="4592000" />
-      <workItem from="1564979178147" duration="1388000" />
+      <workItem from="1564979178147" duration="1505000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16514000" />
+    <option name="totallyTimeSpent" value="16631000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1000" extended-state="0" />
@@ -363,8 +368,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pages/home/home.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="402">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="42" selection-end-line="27" selection-end-column="42" />
+        <state relative-caret-position="300">
+          <caret line="20" column="20" lean-forward="true" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
           <folding>
             <element signature="e#139#191#0" expanded="true" />
             <element signature="e#362#412#0" expanded="true" />
