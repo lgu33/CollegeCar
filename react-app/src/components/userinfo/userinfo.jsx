@@ -1,14 +1,25 @@
 import React, {Component, Fragment} from 'react';
-
-import tempImg from './tempuser.png';
+import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+import {getCurrentUserProfile} from '../../actions/authActions';
+import {} from '../../actions/authActions';
 import birds from './birds.JPG';
 import './userinfo.css'
 import nik from './nik.JPG';
+
 
 //https://www.w3schools.com/cssref/css_selectors.asp
 
 class UserInfo extends Component{
 
+    constructor(){
+        super()
+    }
+
+    componentWillMount(){
+        debugger
+        this.props.getCurrentUserProfile(this.state)
+    }
     render(){
         return(
             <Fragment>
@@ -96,4 +107,16 @@ class UserInfo extends Component{
 
 }
 
-export default UserInfo;
+function mapStateToProps(state){
+    return{
+        users: state.userProfile,
+        auth: state.auth;
+
+    }
+}
+
+UserInfo.propTypes = {
+    userProfle: PropTypes.func.isRequired,
+}
+
+export default connect(mapStateToProps, {getCurrentUserProfile})(UserInfo);
