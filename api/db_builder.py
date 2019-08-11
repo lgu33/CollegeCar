@@ -41,7 +41,10 @@ def build_user_profiles():
     :return:
     """
 
-    NUMBER_USERS = 500
+    df_mapped_data = get_mapped_data()
+    filter_by_major_inst = df_mapped_data[df_mapped_data['carnegie_size_setting'] > 12]
+    uids = filter_by_major_inst['id'].tolist()
+    NUMBER_USERS = 25000
     from faker import Faker
     edu_attainment = ['Some High School',
                       'High School Degree',
@@ -63,7 +66,7 @@ def build_user_profiles():
             username = first_name + last_name + str(rn.randint(0, 100))
         email = fake.email()
         dob = fake.date()
-        joined = datetime.today().date()
+        joined = fake.date()
         password = ''.join([rn.choice(string.ascii_letters + string.digits) for n in range(8)])
         # STORE IN DICT
         user = dict()
@@ -75,6 +78,7 @@ def build_user_profiles():
         user['joined_site'] = joined
         user['password'] = password
         user['educational_attainment'] = edu_attainment[rn.randint(0, num_attainments-1)]
+        user['university_id'] = int(filter_by_major_inst.iloc[rn.randint(0, len(uids))]['id'])
         users.append(user)
     df = pd.DataFrame.from_dict(users)
     user_file_path = os.path.join(data_path, 'users.csv')
@@ -213,20 +217,16 @@ def create_image_links(data):
     master_df.to_csv(os.path.join(data_path, 'university_image_links.csv'))
 
 
-db_conn, engine = create_db_conn()
+# db_conn, engine = create_db_conn()
 # df_mapped_data = get_mapped_data()
 # create_image_links(df_mapped_data)
 
+build_user_profiles()
+# map_db_dataset()
 
 # df_university_table = split_data_university_table(df_mapped_data)
 # df_location_table = split_data_local(df_mapped_data)
 # build_user_profiles()
-add_users_to_db(db_conn, engine)
-
-
-# code to download images
-# f = open('00000001.jpg','wb')
-# f.write(urllib.urlopen('http://www.gunnerkrigg.com//comics/00000001.jpg').read())
-# f.close()
+# add_users_to_db(db_conn, engine)
 
 
