@@ -7,7 +7,7 @@ import random
 import string
 import json
 import unittest
-from api.tests.base import BaseTestCase
+from app.tests.base import BaseTestCase
 
 # TODO: FINISH TEST CASES https://realpython.com/token-based-authentication-with-flask/
 

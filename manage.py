@@ -9,15 +9,15 @@ from flask_script import Manager
 
 COV = coverage.coverage(
     branch=True,
-    include='api/*',
+    include='app/*',
     omit=[
-        'api/tests/*',
-        'api/config.py',
+        'app/tests/*',
+        'app/config.py',
     ]
 )
 COV.start()
 
-from api import create_app
+from app import create_app
 
 app = create_app()
 
@@ -27,7 +27,7 @@ manager = Manager(app)
 @manager.command
 def test():
     """Runs the unit tests without test coverage."""
-    tests = unittest.TestLoader().discover('api/tests', pattern='test*.py')
+    tests = unittest.TestLoader().discover('app/tests', pattern='test*.py')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         return 0
@@ -37,7 +37,7 @@ def test():
 @manager.command
 def cov():
     """Runs the unit tests with coverage."""
-    tests = unittest.TestLoader().discover('api/tests')
+    tests = unittest.TestLoader().discover('app/tests')
     result = unittest.TextTestRunner(verbosity=2).run(tests)
     if result.wasSuccessful():
         COV.stop()

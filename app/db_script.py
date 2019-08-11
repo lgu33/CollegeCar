@@ -1,5 +1,6 @@
 from sqlalchemy import create_engine
 from sqlalchemy.exc import ProgrammingError
+from sqlalchemy import text
 import os
 import pandas as pd
 
@@ -32,7 +33,7 @@ class Users(Base):
         first_name = "first_name VARCHAR(255)"
         last_name = "last_name VARCHAR(255)"
         email = "email VARCHAR(255)"
-        username = "username VARCHAR(255)"
+        username = "username VARCHAR(255) UNIQUE"
         dob = "dob DATE"
         joined_site = "joined_site DATE"
         password = "password VARCHAR(255)"
@@ -72,26 +73,27 @@ class Users(Base):
             cursor.copy_expert(cmd, f)
             connection.commit()
 
-    def insert_user(self, first_name, last_name, username, email, dob, joined_site, password, educational_attainment):
-        self.conn.execute("INSERT INTO users(first_name, last_name, username, dob, joined_site, password, "
-                          "educational_attainment) "
-                          "VALUES ("
-                          "'{first_name}',"
-                          "'{last_name}',"
-                          "'{username}',"
-                          "'{email}',"
-                          "'{dob}',"
-                          "'{joined_site}',"
-                          "'{password}',"
-                          "'{educational_attainment}',"
-                          ")".format(first_name=first_name,
-                                        last_name=last_name,
-                                        username=username,
-                                        email=email,
-                                        dob=dob,
-                                        joined_site=joined_site,
-                                        password=password,
-                                        educational_attainment=educational_attainment))
+    def insert_user(self, first_name, last_name, username, email, password, joined_site, dob, attainment, alumni_of):
+        q = text("INSERT INTO users(first_name, last_name, username, email, password, joined_site, dob, educational_attainment, university_id) "
+                 "VALUES('{first_name}', '{last_name}', '{username}', '{email}', '{password}', '{dob}', '{joined_site}', '{edu_attainment}', '{alumni_of}')".format(
+            first_name=first_name, last_name=last_name, username=username, email=email, password=password, dob=dob, joined_site=joined_site,
+            alumni_of=alumni_of, edu_attainment=attainment))
+
+        try:
+            self.conn.execute(q)
+            return True
+        except:
+            return False
+
+    def get_user_by_username(self, username):
+        q = text("SELECT * FROM users WHERE username = '{name}'".format(name=username))
+        res = self.conn.execute(q)
+        if res.rowcount == 1:
+            return res
+        else:
+            return False
+
+
     def get_users_by_age(self, age):
         res = self.conn.execute("SELECT first_name, last_name, date_part('year',age(dob)) as age, * FROM users;")
         return res
@@ -161,11 +163,14 @@ class University(Base):
             cursor.copy_expert(cmd, f)
             connection.commit()
 
-    def insert(self):
-        self.conn.execute("INSERT INTO universities (uname, description)"
-                          "VALUES ('biubfewk', 'dkl  csd');")
-        self.conn.execute("INSERT INTO universities (uname, description)"
-                          "VALUES ('iurfif', 'dkl  csd');")
+    def get_university_id_from_name(self, name):
+        q = text("SELECT id, name FROM universities WHERE name LIKE '%%{name}'".format(name=name))
+        res = self.conn.execute(q)
+        data = res.first()
+        if data:
+            return data['id']
+        else:
+            return -1
 
 
 class Regions(Base):

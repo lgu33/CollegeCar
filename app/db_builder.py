@@ -95,9 +95,6 @@ def location_table():
     university_data.to_csv(os.path.join(data_path, 'university_data.csv'))
 
 
-
-
-
 def build_user_comments():
     users = get_users()
 
@@ -150,7 +147,7 @@ def build_user_profiles():
         if len(first_name) > 3:
             username = first_name[:3] + last_name + str(rn.randint(0, 1000000))
         else:
-            username = first_name + last_name + str(rn.randint(0, 100))
+            username = first_name + last_name + str(rn.randint(0, 1000000))
         email = fake.email()
         dob = fake.date()
         joined = fake.date()
@@ -166,7 +163,6 @@ def build_user_profiles():
         user['password'] = password
         user['educational_attainment'] = edu_attainment[rn.randint(0, num_attainments-1)]
         user['university_id'] = int(filter_by_major_inst.iloc[rn.randint(0, len(uids) - 1)]['id'])
-        users['state'] = rn.randint(1, 51)
         users.append(user)
     df = pd.DataFrame.from_dict(users)
     user_file_path = os.path.join(data_path, 'users.csv')

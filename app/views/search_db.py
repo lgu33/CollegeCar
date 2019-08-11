@@ -1,6 +1,6 @@
 from flask import Blueprint, request, make_response, jsonify
 from flask.views import MethodView
-from api.models import *
+from app.models import *
 
 
 class Search(MethodView):
