@@ -16,6 +16,7 @@ import SearchPage from '../../components/search/search_page';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
+
 class Home extends Component{
 
     render(){
@@ -27,10 +28,10 @@ class Home extends Component{
                         <div className="container">
                             <Route path="/register" exact component={Register}/>
                             <Route path="/login" exact component={Login}/>
-                            <Route path="/" exact component={SearchCard}/>
+                            <Route path="/searchcard" exact component={SearchCard}/>
                             <Route path="/scard" exact component={SearchCard} />
                             <Route path="/" exact component={Search}/>
-                            <Route path="/searchpage" exact component={SearchPage}/>
+                            <Route path="/searchpage" exac st component={SearchPage}/>
                             <Route path="/userinfo" exact component={UserInfo}/>
                             <Route path="/user/:id" exact component={UserInfo}/>
                         </div>
