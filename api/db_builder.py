@@ -148,7 +148,7 @@ def build_user_profiles():
         first_name = name[0]
         last_name = name[1]
         if len(first_name) > 3:
-            username = first_name[:3] + last_name + str(rn.randint(0, 100))
+            username = first_name[:3] + last_name + str(rn.randint(0, 1000000))
         else:
             username = first_name + last_name + str(rn.randint(0, 100))
         email = fake.email()
@@ -166,6 +166,7 @@ def build_user_profiles():
         user['password'] = password
         user['educational_attainment'] = edu_attainment[rn.randint(0, num_attainments-1)]
         user['university_id'] = int(filter_by_major_inst.iloc[rn.randint(0, len(uids) - 1)]['id'])
+        users['state'] = rn.randint(1, 51)
         users.append(user)
     df = pd.DataFrame.from_dict(users)
     user_file_path = os.path.join(data_path, 'users.csv')
@@ -302,4 +303,4 @@ def create_image_links(data):
 #build_financial_statistics_table()
 # build_universities_table()
 
-location_table()
+build_user_profiles()
