@@ -8,6 +8,7 @@ from sqlalchemy import create_engine
 from sqlalchemy.sql import table, column, select, update, insert, func
 from sqlalchemy import MetaData, Table, Column, Integer, Date, String
 from google_images_download import google_images_download
+from essential_generators import DocumentGenerator
 
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
@@ -29,10 +30,96 @@ def get_mapped_data():
     return pd.read_excel(path)
 
 
+def get_users():
+    path = os.path.join(data_path, 'users.csv')
+    return pd.read_csv(path)
+
+
 def create_db_conn():
     engine = create_engine(POSTGRES_LOCAL_BASE)
     connection = engine.connect()
     return connection, engine
+
+
+def build_financial_statistics_table():
+    df_mapped_data = get_mapped_data()
+    e_cols = list(range(316, 384))
+    cols = [0] + e_cols
+    financials_table = df_mapped_data.iloc[:, cols]
+    financials_table.columns = [i.replace(".", "_") for i in financials_table.columns.tolist()]
+    file_path = os.path.join(data_path, 'financial_statistics.csv')
+    financials_table.to_csv(file_path)
+
+
+def build_ethnic_statistics_table():
+    df_mapped_data = get_mapped_data()
+    e_cols = list(range(26,38)) + list(range(292,313))
+    cols = [0] + e_cols
+    ethnics_table = df_mapped_data.iloc[:, cols]
+    ethnics_table.columns = [i.replace(".", "_") for i in ethnics_table.columns.tolist()]
+    file_path = os.path.join(data_path, 'ethnic_statistics.csv')
+    ethnics_table.to_csv(file_path)
+
+
+def build_universities_table():
+    df_mapped_data = get_mapped_data()
+    # uni_data_range = list(range(23, 99))
+    university_columns = [0, 1, 2, 3, 8, 9, 12, 13]
+    university_data = df_mapped_data.iloc[:, university_columns]
+
+
+def states_table():
+    df_mapped_data = get_mapped_data()
+    states = set(df_mapped_data['state'].tolist())
+    df = pd.DataFrame(list(states))
+    file_path = os.path.join(data_path, 'states.csv')
+    df.to_csv(file_path)
+
+
+def location_table():
+    df_mapped_data = get_mapped_data()
+    university_columns = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 13, 18]
+    university_data = df_mapped_data.iloc[:, university_columns]
+
+    f_path = os.path.join(data_path, "zip_code_database.csv")
+    location_data = pd.read_csv(f_path)
+    states_p = os.path.join(data_path, 'states.csv')
+    states = pd.read_csv(states_p)
+    for i, value in location_data.iterrows():
+        match = states[states['state'] == value['state']]
+        id = int(match['id'].values[0])
+        location_data.at[i, "state"] = id
+        #university_data.loc[university_data['state'] == value['state'], "state"] = id
+    university_data['zip'] = university_data['zip'].str.split("-").str[0]
+    location_data.to_csv(os.path.join(data_path, 'location.csv'))
+    university_data.to_csv(os.path.join(data_path, 'university_data.csv'))
+
+
+
+
+
+def build_user_comments():
+    users = get_users()
+
+    num_users = len(users)
+    num_universities = len(users['university_id'])
+
+    num_comments = 50000
+    gen = DocumentGenerator()
+    master = []
+    for comm in range(num_comments):
+        records = {}
+        rand_university = rn.randint(0, num_universities - 1)
+        rand_user = rn.randint(1, num_users - 1)
+        comment = gen.sentence()
+        university_id = users.iloc[rand_university]['university_id']
+        records['comment'] = comment
+        records['university_id'] = university_id
+        records['user_id'] = rand_user
+        master.append(records)
+    temp = pd.DataFrame(master)
+    file_path = os.path.join(data_path, 'comments.csv')
+    temp.to_csv(file_path)
 
 
 def build_user_profiles():
@@ -78,7 +165,7 @@ def build_user_profiles():
         user['joined_site'] = joined
         user['password'] = password
         user['educational_attainment'] = edu_attainment[rn.randint(0, num_attainments-1)]
-        user['university_id'] = int(filter_by_major_inst.iloc[rn.randint(0, len(uids))]['id'])
+        user['university_id'] = int(filter_by_major_inst.iloc[rn.randint(0, len(uids) - 1)]['id'])
         users.append(user)
     df = pd.DataFrame.from_dict(users)
     user_file_path = os.path.join(data_path, 'users.csv')
@@ -128,20 +215,6 @@ def map_db_dataset():
     primary_data.columns = column_name_mapping_list
     mapped_data_path = os.path.join(data_path, 'mapped_data.xlsx')
     primary_data.to_excel(mapped_data_path)
-
-
-def split_data_university_table(data):
-    """
-    A FUNCTION FOR READING IN THE MAPPED DATA (MAPPED_DATA.XLSX...PLEASE SEE FUNCTION ABOVE IF YOU DO NOT
-    HAVE THE FILE) AND SPLITTING THE DATA ONLY TO PRESERVE THOSE NECESSARY FOR UNIVERSITY.
-    :return:
-    """
-
-    uni_data_range = list(range(23, 99))
-    university_columns = [0, 1, 2, 3, 8, 9, 11, 12, 13, 14, 15] + uni_data_range
-    university_data = data.iloc[:, university_columns]
-
-    return university_data
 
 
 def split_data_local(data):
@@ -220,13 +293,13 @@ def create_image_links(data):
 # db_conn, engine = create_db_conn()
 # df_mapped_data = get_mapped_data()
 # create_image_links(df_mapped_data)
-
-build_user_profiles()
 # map_db_dataset()
-
 # df_university_table = split_data_university_table(df_mapped_data)
 # df_location_table = split_data_local(df_mapped_data)
 # build_user_profiles()
 # add_users_to_db(db_conn, engine)
+#build_ethnic_statistics_table()
+#build_financial_statistics_table()
+# build_universities_table()
 
-
+location_table()
