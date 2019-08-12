@@ -93,6 +93,14 @@ class Users(Base):
         else:
             return False
 
+    def get_user_by_id(self, id):
+        q = text("SELECT * FROM users WHERE id = '{id}'".format(id=id))
+        res = self.conn.execute(q)
+        if res.rowcount == 1:
+            return dict(res.first())
+        else:
+            return False
+
 
     def get_users_by_age(self, age):
         res = self.conn.execute("SELECT first_name, last_name, date_part('year',age(dob)) as age, * FROM users;")
@@ -138,6 +146,13 @@ class Comment(Base):
                                                 user_id=user_id,
                                                 comment_id=comment_id,
                                                 comment=comment))
+
+    def get_comments_by_user_id(self, user_id):
+        q = text("SELECT comment FROM comment WHERE user_id = '{user_id}'".format(user_id=user_id))
+        res = self.conn.execute(q)
+        if res.rowcount > 0:
+            return [dict(i) for i in res]
+        return False
 
 
 class University(Base):

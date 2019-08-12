@@ -1,5 +1,6 @@
 import os
 import pandas as pd
+from app.queries import *
 from app.forms import RedditAccountConfiguration, AutoMessengerSettings, RegistrationForm, LoginForm, PostForm
 from flask import render_template, flash, redirect, url_for, request, session
 from flask_login import login_user, current_user, logout_user, login_required
@@ -15,11 +16,12 @@ from werkzeug.utils import secure_filename
 from datetime import datetime
 
 
-from app.db_script import Base, Users, University
+from app.db_script import Base, Users, University, Comment
 
 db = Base()
 user = Users()
 university = University()
+comment = Comment()
 
 
 
@@ -47,6 +49,27 @@ def about():
     return render_template("about.html")
 
 
+@app.route("/user_profile/<uid>", methods=["POST", "GET"])
+def profile_page(uid):
+    uid = int(uid)
+    if not 'user' in session:
+        flash("you are not logged in ")
+
+    if session['user']['id'] == uid:
+        # todo: get comments
+        comments = comment.get_comments_by_user_id(uid)
+        if not comments:
+            comments = []
+        return render_template('profile_page.html', user_profile=session['user'], comments=comments)
+
+    new_user = user.get_user_by_id(uid)
+    comments = comment.get_comments_by_user_id(uid)
+    if not comments:
+        comments = []
+
+    return render_template("profile_page.html", user_profile=new_user, comments=comments)
+
+
 @app.route("/", methods=["POST", "GET"])
 @app.route("/search", methods=["POST", "GET"])
 def search():
@@ -56,14 +79,14 @@ def search():
     if request.method == "POST":
         query = request.form['school_search']
         if query:
-            query_data = university.get_university_by_name(query)
+            query_data = get_universities_from_query_by_name(query)
+            if not query_data:
+                query_data = []
             return render_template("search_cards.html", results=query_data)
         else:
             flash("Please enter something into the search box below", 'warning')
             return render_template("search.html")
-        # query db
-        # render cards
-    print
+
     return render_template("search.html")
 
 
@@ -138,45 +161,3 @@ def logout():
         return render_template("login")
     del session['user']
     return redirect('/login')
-#
-#
-# @app.route("/account")
-# @login_required
-# def account():
-#     """
-#     ROUTE FOR VIEW ACCOUNT
-#
-#     :return:
-#     """
-#
-#     return render_template('account.html', title='Account')
-
-
-
-
-
-# @app.route('/uploader', methods=['GET', 'POST'])
-# @login_required
-# def upload_file():
-#     if request.method == 'POST':
-#         try:
-#             file = request.files['file']
-#             if file and allowed_file(file.filename):
-#                 filename = secure_filename(file.filename)
-#                 file_path = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-#                 if not os.path.isdir(app.config["UPLOAD_FOLDER"]):
-#                     os.makedirs(app.config["UPLOAD_FOLDER"])
-#                 file.save(file_path)
-#                 flash('File Uploaded Successfully', 'success')
-#                 data = read_uploaded_file(file_path)
-#                 add_keywords_to_db(data)
-#                 delete_unused_primary_keys()
-#         except HTTPException:
-#             flash('Failed Upload. Are you sure you selected the correct file?', 'warning')
-#             redirect('company_portal')
-#     return redirect('company_portal')
-
-
-
-
-

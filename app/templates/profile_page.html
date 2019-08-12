@@ -1,0 +1,85 @@
+{% extends '/layout.html' %}
+{% block content %}
+<div class="row">
+    <div class="content-profile-page">
+        <div class="profile-user-page card">
+            <div class="img-user-profile">
+                <img class="img-fluid profile-bgHome" src="https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_960_720.jpg" />
+                <img class="img-fluid avatar" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />
+            </div>
+            <button class="btn">Add Friend</button>
+            <div class="user-profile-data">
+                <h1>{{ [user_profile['first_name'], user_profile['last_name']] | join(" ") }}</h1>
+                <p>"Put a Quote that you like here"</p>
+            </div>
+            <div class="description-profile">Give a little description of yourself</div>
+            <ul class="data-user">
+                <li><a><strong>- -</strong><span>GPA</span></a></li>
+                <li><a><strong>--</strong><span>Number of Comments</span></a></li>
+                <li style="border-right: 0.1em solid transparent" ><a><strong>100</strong><span>Karma</span></a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="user-activity">
+            <div class="col" align="center">
+                <a class="dropdown" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    User Information
+                    <p><i class="fa fa-angle-double-up" style="-moz-transform: scale(3.5,-1.4)"></i></p>
+                </a>
+            </div>
+
+        <div class="collapse user-details" id="collapseExample" >
+            <div class="card card-body">
+                <hr></hr>
+                <p>
+                    <b>Name:</b> {{[user_profile['first_name'], user_profile['last_name']] | join(" ")}}
+                </p>
+                <hr></hr>
+                <p>
+                    <b>Username:</b> {{user_profile['username']}}
+                </p>
+                <hr></hr>
+                <p>
+                    <b>Age:</b> 23
+                </p>
+                <hr></hr>
+                <p>
+                    <b>Joined:</b> {{user_profile['joined_site']}}
+                </p>
+                <hr></hr>
+                <p>
+                    <b>Email:</b> {{ user_profile['email'] }}
+                </p>
+                <hr></hr>
+                <p>
+                    <b>Educational Attainment: {{user_profile['educational_attainment']}}</b>
+                </p>
+             </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="user-activity">
+        <h2>User activity</h2>
+        {% if comments %}
+        {% for comment in comments %}
+            <div class="card shadow margined rss-card">
+                <div class="container-fluid row" style="height: 100%">
+                    <div class="col d-flex align-items-center justify-content-center image-col">
+                        <img class="img-fluid rounded-circle comment-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="nik" />
+                    </div>
+                    <div class="col contentBar cutLink">
+                        {{comment['comment'] }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <p>User has no comments!</p>
+        {% endif %}
+    </div>
+
+</div>
+{% endblock content %}
