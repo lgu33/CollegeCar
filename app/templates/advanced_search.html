@@ -1,0 +1,198 @@
+{% extends '/layout.html' %}
+{% block content %}
+<div class="container">
+    {% set states = ['AK', 'AL', 'AR', 'AS', 'AZ', 'CA', 'CO',
+            'CT',
+            'DC',
+            'DE',
+            'FL',
+            'FM',
+            'GA',
+            'GU',
+            'HI',
+            'IA',
+            'ID',
+            'IL',
+            'IN',
+            'KS',
+            'KY',
+            'LA',
+            'MA',
+            'MD',
+            'ME',
+            'MH',
+            'MI',
+            'MN',
+            'MO',
+            'MP',
+            'MS',
+            'MT',
+            'NC',
+            'ND',
+            'NE',
+            'NH',
+            'NJ',
+            'NM',
+            'NV',
+            'NY',
+            'OH',
+            'OK',
+            'OR',
+            'PA',
+            'PR',
+            'PW',
+            'RI',
+            'SC',
+            'SD',
+            'TN',
+            'TX',
+            'UT',
+            'VA',
+            'VI',
+            'VT',
+            'WA',
+            'WI',
+            'WV',
+            'WY'] %}
+
+
+
+    <h2>Search Specification</h2>
+    <hr/>
+    <form method="POST" action="{{url_for('advanced_search')}}" class="input-group">
+    <h4>Geographic</h4>
+    <div class="col-sm-12">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">States</button>
+            </div>
+            <select name="state" class="custom-select" id="inputGroupSelect03">
+                <option value = "0" >choose...</option>
+                {% for state in states %}
+                    <option>{{state}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br/>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">City</button>
+            </div>
+            <input name="city_name" type="text" class="form-control" placeholder="" aria-label=""
+                   aria-describedby="basic-addon1"/>
+        </div>
+        <br/>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary" type="button">Zipcode</button>
+            </div>
+            <input name="zip_code" type="text" class="form-control" placeholder="" aria-label=""
+                   aria-describedby="basic-addon1"/>
+        </div>
+    </div>
+    <hr/>
+    <h4>Ethnicity</h4>
+    <div class="col-sm-12">
+        <div class="checkbox">
+            <label>
+                <input name="cb_pred_black" type="checkbox" value="1"/>
+                <span class="cr"></span>
+                Minority Serving Predominantly Black
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="cb_hist_black" type="checkbox" value="1"/>
+                <span class="cr"></span>
+                Minority Serving Historically Black
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="cb_annh" type="checkbox" value=""/>
+                <span class="cr"></span>
+                Minority Serving Hawaiian
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="cb_tribal" type="checkbox" value=""/>
+                <span class="cr"></span>
+                Minority Serving Tribal
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="cb_asian" type="checkbox" value=""/>
+                <span class="cr"></span>
+                Minority Serving Asian
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="cb_hispanic" type="checkbox" value=""/>
+                <span class="cr"></span>
+                Minority Serving Hispanic
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="cb_native" type="checkbox" value=""/>
+                <span class="cr"></span>
+                Minority Serving Native
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="cb_men" type="checkbox" value=""/>
+                <span class="cr"></span>
+                Men Only
+            </label>
+        </div>
+        <div class="checkbox">
+            <label>
+                <input name="cb_women" type="checkbox" value=""/>
+                <span class="cr"></span>
+                Women Only
+            </label>
+        </div>
+
+    </div>
+    <hr/>
+    <h4>Addmission Rate and Tuition</h4>
+
+    <div class="col-sm-12">
+        <small>Addmission Rate</small>
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">Less than</button>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label=""
+                       aria-describedby="basic-addon1"/>
+            </div>
+        </div>
+
+        <small>Tuition</small>
+        <div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary" type="button">Less than</button>
+                </div>
+                <input type="text" class="form-control" placeholder="" aria-label=""
+                       aria-describedby="basic-addon1"/>
+            </div>
+        </div>
+
+    </div>
+    <div class="input-group-btn">
+        <div class="btn-group" role="group">
+            &nbsp;
+            <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    </form>
+    <br>
+</div>
+
+{% endblock content %}

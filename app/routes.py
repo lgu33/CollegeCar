@@ -92,7 +92,12 @@ def search():
 
 @app.route("/advanced_search", methods=["POST", "GET"])
 def advanced_search():
-    return render_template('about.html')
+    if not 'user' in session:
+        flash("you are not logged in ")
+
+    if request.method == "POST":
+        print
+    return render_template('advanced_search.html')
 
 
 @app.route("/register", methods=['GET', 'POST'])
