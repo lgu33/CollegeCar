@@ -390,6 +390,48 @@ class UniversityImages(Base):
             connection.commit()
 
 
+class Subscribes(Base):
+
+    def __init__(self):
+        super().__init__()
+        try:
+            self.conn.execute(
+                "CREATE TABLE Subscribes(user_id integer REFERENCES users(id), university_id integer REFERENCES universities(id), "
+                "CONSTRAINT p_id PRIMARY KEY (user_id, university_id));")
+        except ProgrammingError:
+            print("TABLE ALREADY EXISTS")
+
+    def import_db(self):
+        file_path = os.path.join(data_path, 'university_subscriptions.csv')
+        with open(file_path, 'r') as f:
+            connection = self.engine.raw_connection()
+            cursor = connection.cursor()
+            cols = "user_id,university_id"
+            cmd = 'COPY Subscribes({cols}) FROM STDIN WITH (FORMAT CSV, HEADER TRUE)'.format(cols=cols)
+            cursor.copy_expert(cmd, f)
+            connection.commit()
+
+
+class Friend(Base):
+
+    def __init__(self):
+        super().__init__()
+        try:
+            self.conn.execute("CREATE TABLE Friend(user_id integer REFERENCES users(id), friend_id integer REFERENCES users(id));")
+        except ProgrammingError:
+            print("TABLE ALREADY EXISTS")
+
+    def import_db(self):
+        file_path = os.path.join(data_path, 'user_friends.csv')
+        with open(file_path, 'r') as f:
+            connection = self.engine.raw_connection()
+            cursor = connection.cursor()
+            cols = "user_id,friend_id"
+            cmd = 'COPY Friend({cols}) FROM STDIN WITH (FORMAT CSV, HEADER TRUE)'.format(cols=cols)
+            cursor.copy_expert(cmd, f)
+            connection.commit()
+
+
 if __name__ == "__main__":
     try:
         universities = University()
@@ -439,5 +481,17 @@ if __name__ == "__main__":
     try:
         locations = Locations()
         locations.import_db()
+    except:
+        print("DB EXISTS WITH DATA")
+
+    try:
+        friend = Friend()
+        friend.import_db()
+    except:
+        print("DB EXISTS WITH DATA")
+
+    try:
+        subs = Subscribes()
+        subs.import_db()
     except:
         print("DB EXISTS WITH DATA")

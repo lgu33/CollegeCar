@@ -299,11 +299,14 @@ def create_friends_relationship():
     friends = []
     for i in range(1, num_users + 1):
         num_friends = rn.randint(1, MAX_FRIENDS)
+        f_list = []
         for j in range(num_friends):
             random_friend = rn.randint(1, num_users)
             while random_friend == i:
                 random_friend = rn.randint(1, num_users)
-            friends.append((i, random_friend))
+            f_list.append((i, random_friend))
+        f_list = list(set(f_list))
+        friends = friends + f_list
 
     df = pd.DataFrame(friends, columns=['user_id', 'friend_id'])
     f_path = os.path.join(data_path, "user_friends.csv")
@@ -348,3 +351,4 @@ def create_universities_subscriptions():
 #build_financial_statistics_table()
 # build_universities_table()
 # create_universities_subscriptions()
+create_friends_relationship()
