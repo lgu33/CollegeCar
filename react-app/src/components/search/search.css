@@ -30,12 +30,19 @@
 }
 
 .image {
-    background-image: url(https://imgpile.com/images/1bac2d838cf439a722f8868c4cdd9a0a.jpg);
+    background-image: url(https://morgridge.wisc.edu/wp-content/uploads/sites/4/2017/07/Civic-Action-Plan.jpg);
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+.wrapper{
+    background: #497dd0;
+    padding:100px;
+}
+
+
 
 
 @media screen and (min-width: 768px) {

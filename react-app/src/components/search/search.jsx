@@ -18,7 +18,7 @@ class Search extends Component{
             <div>
                 <span className="border">
                     <div class="image" style={{height: '30em', width: '68em'}}>
-                        <img scr="https://imgpile.com/images/1bac2d838cf439a722f8868c4cdd9a0a.jpg"/>
+                        <img scr="https://morgridge.wisc.edu/wp-content/uploads/sites/4/2017/07/Civic-Action-Plan.jpg"/>
                     </div>
                 </span>
                 <div class="container">

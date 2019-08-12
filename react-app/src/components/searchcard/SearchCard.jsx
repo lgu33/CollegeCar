@@ -8,8 +8,8 @@ class SearchCard extends Component{
     render(){
         const clickCard = (
             <div>
-                <div class="">
-                    <div class="card mt-3 tab-card">
+                <div class="" style = {{minHeight: '340px'}}>
+                    <div class="card mt-3 tab-card" >
                         <div class="card-header tab-card-header">
                             <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
@@ -27,43 +27,68 @@ class SearchCard extends Component{
                             </ul>
                         </div>
 
-                        <div class="tab-content" id="myTabContent">
+                        <div class="tab-content" id="myTabContent"  style={{minHeight: '200px'}}>
                             <div class="tab-pane fade show active p-3" id="one" role="tabpanel" aria-labelledby="one-tab">
                                 <h5 class="card-title">General</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <p>
+                                    Region: {"Great Lakes"} <br/>
+                                    States: {"Wisconsin"} <br/>
+                                    City: {"Madison"} <br/>
+                                </p>
                             </div>
-                            <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab">
+                            <div class="tab-pane fade p-3" id="two" role="tabpanel" aria-labelledby="two-tab" >
                                 <h5 class="card-title">Demographics</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <p>
+                                    Number of Students: {"???????"} <br/>
+                                    Minority Serving Predominantly Black: {"YES"} <br/>
+                                    Minority Serving Historically Black: {"YES"} <br/>
+                                    Minority Serving Annh: {"YES"} <br/>
+                                    Minority Serving Tribal: {"YES"} <br/>
+                                    Minority Serving Hispanic: {"YES"} <br/>
+                                    Minority Serving Aanipi: {"YES"} <br/>
+                                    Minority Serving Nant: {"YES"} <br/>
+
+                                </p>
                             </div>
                             <div class="tab-pane fade p-3" id="three" role="tabpanel" aria-labelledby="three-tab">
                                 <h5 class="card-title">Financial</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <p>
+                                    In-state Tuition: {"$10533"} <br/>
+                                    Out of State Tuition: {"$34783"} <br/>
+                                </p>
                             </div>
                             <div class="tab-pane fade p-3" id="four" role="tabpanel" aria-labelledby="three-tab">
                                 <h5 class="card-title">Statistics</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Go somewhere</a>
+                                <p>
+                                    Admission Rate: {"%0.5381"} <br/>
+                                    Completion Rate: {"%0.8723"} <br/>
+                                </p>
                             </div>
 
                         </div>
+
                     </div>
+
                 </div>
-            </div>
+
+
+
+            <hr/></div>
+
+
         );
         return(
 
-            <div className="row row-custom">
+            <div className="row row-custom" >
             <div className="d-flex p-2"></div>
-                <div className="row"><h2 className="center-align">University of Wisconsin - Madison</h2></div>
+                <div style = {{position:'relative', left: '80%'}}>
+                <a href="#" className="btn btn-primary">More Info</a>
+                </div>
+                <div className="row"><h2 className="center-align">{"University of Wisconsin - Madison"}</h2></div>
                 <div className="row">
-                    <div className="col-xs-4 col-lg-4 custom-col">
+                    <div className="col-xs-4 col-lg-4 custom-col" style ={{paddingTop: '2.2em', paddingLeft: '5.2em'}}>
                         <img src={uw_img} className="img-responsive university-image"></img>
                     </div>
-                    
                     <div className="col-xs-7 col-lg-7 custom-col">
                     {clickCard}
                     </div>
