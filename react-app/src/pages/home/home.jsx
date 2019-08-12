@@ -13,6 +13,7 @@ import SearchCard from '../../components/searchcard/SearchCard';
 import UserInfo from '../../components/userinfo/userinfo';
 import Search from '../../components/search/search';
 import SearchPage from '../../components/search/search_page';
+import infoChange from '../../components/info/infoChange';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 
@@ -34,6 +35,7 @@ class Home extends Component{
                             <Route path="/searchpage" exac st component={SearchPage}/>
                             <Route path="/userinfo" exact component={UserInfo}/>
                             <Route path="/user/:id" exact component={UserInfo}/>
+                            <Route path="/infochange" exact component={infoChange}/>
                         </div>
                     </Switch>
                 </div>
