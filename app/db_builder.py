@@ -22,7 +22,7 @@ POSTGRES_LOCAL_BASE = "postgresql://{username}:{password}@localhost:{port}/{db_n
                                                                                     db_name=DB_NAME)
 
 curr_dir = os.path.dirname(os.path.realpath(__file__))
-data_path = os.path.join(curr_dir, 'data')
+data_path = os.path.join(curr_dir, 'db_data')
 
 
 def get_mapped_data():
@@ -32,6 +32,11 @@ def get_mapped_data():
 
 def get_users():
     path = os.path.join(data_path, 'users.csv')
+    return pd.read_csv(path)
+
+
+def get_universities():
+    path = os.path.join(data_path, 'university_data.csv')
     return pd.read_csv(path)
 
 
@@ -287,6 +292,50 @@ def create_image_links(data):
     master_df.to_csv(os.path.join(data_path, 'university_image_links.csv'))
 
 
+def create_friends_relationship():
+    users = get_users()
+    num_users = len(users)
+    MAX_FRIENDS = 20
+    friends = []
+    for i in range(1, num_users + 1):
+        num_friends = rn.randint(1, MAX_FRIENDS)
+        for j in range(num_friends):
+            random_friend = rn.randint(1, num_users)
+            while random_friend == i:
+                random_friend = rn.randint(1, num_users)
+            friends.append((i, random_friend))
+
+    df = pd.DataFrame(friends, columns=['user_id', 'friend_id'])
+    f_path = os.path.join(data_path, "user_friends.csv")
+    df.to_csv(f_path)
+
+
+def create_universities_subscriptions():
+    users = get_users()
+    universities = get_universities()
+    num_users = int(len(users) * .25)
+    num_universities = len(universities)
+    max_subscriptions = 10
+
+    subs = []
+    for i in range(1, num_users + 1):
+        num_subs = rn.randint(1, max_subscriptions)
+        curr_subs = []
+        for j in range(num_subs):
+            random_sub = rn.randint(0, num_universities - 1)
+            uid = int(universities.iloc[random_sub]['id'])
+            curr_subs.append((i, uid))
+        curr_subs = list(set(curr_subs))
+        subs = subs + curr_subs
+
+    df = pd.DataFrame(subs, columns=['user_id', 'university_id'])
+    f_path = os.path.join(data_path, "university_subscriptions.csv")
+    df.to_csv(f_path)
+
+
+
+
+
 # db_conn, engine = create_db_conn()
 # df_mapped_data = get_mapped_data()
 # create_image_links(df_mapped_data)
@@ -298,5 +347,4 @@ def create_image_links(data):
 #build_ethnic_statistics_table()
 #build_financial_statistics_table()
 # build_universities_table()
-
-build_user_profiles()
+# create_universities_subscriptions()
