@@ -1,0 +1,28 @@
+{% extends '/layout.html' %}
+{% block content %}
+<div>
+    <div class="image" style="height: '30em' width: 68em"}}>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="input-group" id="adv-search">
+                    <form method="POST" action="{{ url_for('search') }}" class="input-group">
+                        <input name="school_search" id="school_search" type="text" class="form-control" placeholder="Search for schools" />
+                        <div class="input-group-btn">
+                            <div class="btn-group" role="group">
+                                &nbsp;
+                                <button type="submit" class="btn btn-primary">Search</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md text-center center-block">
+                    <a href="{{url_for('advanced_search')}}">Advanced Search</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock content %}

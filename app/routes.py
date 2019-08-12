@@ -50,14 +50,33 @@ def about():
 @app.route("/", methods=["POST", "GET"])
 @app.route("/search", methods=["POST", "GET"])
 def search():
-    
-    return render_template("about.html")
+    if not 'user' in session:
+        flash("you are not logged in ")
+        return redirect(url_for('login'))
+    if request.method == "POST":
+        query = request.form['school_search']
+        if query:
+            query_data = university.get_university_by_name(query)
+            return render_template("search_cards.html", results=query_data)
+        else:
+            flash("Please enter something into the search box below", 'warning')
+            return render_template("search.html")
+        # query db
+        # render cards
+    print
+    return render_template("search.html")
+
+
+@app.route("/advanced_search", methods=["POST", "GET"])
+def advanced_search():
+    return render_template('about.html')
 
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
-    # if current_user.is_authenticated:
-    #     return redirect('/')
+    if 'user' in session:
+        return redirect(url_for('search'))
+
     form = RegistrationForm()
     if form.validate_on_submit():
         id = university.get_university_id_from_name(str(form['alumni_of'].data))
@@ -80,7 +99,7 @@ def register():
             flash("University name not found")
             return render_template("new_registration.html", title="Register", form=form)
 
-        user_data = dict(user_info.first())
+        user_data = user_info
         session['user'] = user_data
         session['id'] = user_data['id']
         flash("Account created for {}".format(user_data['username']), 'success')
@@ -95,28 +114,30 @@ def login():
 
     :return:
     """
+    if 'user' in session:
+        flash('you are already logged in')
+        return redirect(url_for('search'))
 
-    if current_user.is_authenticated:
-        return redirect(url_for('reddit_scraper'))
     form = LoginForm()
     if form.validate_on_submit():
-        user = Users.query.filter_by(username=form.username.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            # session['number'] = consequent_integers.next()
-            login_user(user, remember=form.remember.data)
 
+        user_info = user.get_user_by_username(form.username.data)
+
+        if user and form.password.data == user_info['password']:
+            session['user'] = user_info
             next_page = request.args.get('next')
             return redirect(next_page) if next_page else redirect(url_for('search'))
         else:
             flash('Login Unsuccessful.', 'danger')
-
     return render_template("login.html", title="Login", form=form)
 
 
 @app.route("/logout")
 def logout():
-    logout_user()
-    return redirect('/')
+    if not 'user' in session:
+        return render_template("login")
+    del session['user']
+    return redirect('/login')
 #
 #
 # @app.route("/account")

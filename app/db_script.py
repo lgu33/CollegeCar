@@ -89,7 +89,7 @@ class Users(Base):
         q = text("SELECT * FROM users WHERE username = '{name}'".format(name=username))
         res = self.conn.execute(q)
         if res.rowcount == 1:
-            return res
+            return dict(res.first())
         else:
             return False
 
@@ -164,13 +164,20 @@ class University(Base):
             connection.commit()
 
     def get_university_id_from_name(self, name):
-        q = text("SELECT id, name FROM universities WHERE name LIKE '%%{name}'".format(name=name))
+        q = text("SELECT id, name FROM universities WHERE name LIKE '%{name}'".format(name=name))
         res = self.conn.execute(q)
         data = res.first()
         if data:
             return data['id']
         else:
             return -1
+
+    def get_university_by_name(self, name):
+        q = text("SELECT * FROM universities WHERE name LIKE '{name}%'".format(name=name))
+        res = self.conn.execute(q)
+        if res.rowcount > 0:
+            return [dict(i) for i in res]
+        return False
 
 
 class Regions(Base):
