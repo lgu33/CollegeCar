@@ -24,6 +24,9 @@ POSTGRES_LOCAL_BASE = "postgresql://{username}:{password}@localhost:{port}/{db_n
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 data_path = os.path.join(curr_dir, 'db_data')
 
+def get_majors():
+    path = os.path.join(data_path, 'majors.csv')
+    return pd.read_csv(path)
 
 def get_mapped_data():
     path = os.path.join(data_path, 'mapped_data.xlsx')
@@ -336,6 +339,24 @@ def create_universities_subscriptions():
     df.to_csv(f_path)
 
 
+def create_major_relationship():
+    majors = get_majors()
+    unis = get_universities()
+
+    num_unis = len(unis)
+    max_majors = len(majors)
+
+    university_majors = []
+    for i in range(1, num_unis):
+        num_majors = rn.randint(1, max_majors)
+        id = int(unis.iloc[i]['id'])
+        for j in range(num_majors):
+            _major = majors.iloc[j]['id']
+            university_majors.append((id, _major))
+
+    df = pd.DataFrame(university_majors)
+    f_path = os.path.join(data_path, 'university_majors.csv')
+    df.to_csv(f_path)
 
 
 
@@ -351,4 +372,5 @@ def create_universities_subscriptions():
 #build_financial_statistics_table()
 # build_universities_table()
 # create_universities_subscriptions()
-create_friends_relationship()
+# create_friends_relationship()
+create_major_relationship()

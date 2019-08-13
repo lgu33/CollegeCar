@@ -432,6 +432,46 @@ class Friend(Base):
             connection.commit()
 
 
+class Majors(Base):
+
+    def __init__(self):
+        super().__init__()
+        try:
+            self.conn.execute("CREATE TABLE Majors(id integer PRIMARY KEY, major VARCHAR(250));")
+        except ProgrammingError:
+            print("TABLE ALREADY EXISTS")
+
+    def import_db(self):
+        file_path = os.path.join(data_path, 'majors.csv')
+        with open(file_path, 'r') as f:
+            connection = self.engine.raw_connection()
+            cursor = connection.cursor()
+            cols = "id,major"
+            cmd = 'COPY Majors({cols}) FROM STDIN WITH (FORMAT CSV, HEADER TRUE)'.format(cols=cols)
+            cursor.copy_expert(cmd, f)
+            connection.commit()
+
+
+class UniversityMajors(Base):
+
+    def __init__(self):
+        super().__init__()
+        try:
+            self.conn.execute("CREATE TABLE UniversityMajors(university_id integer REFERENCES universities(id), major_id integer REFERENCES majors(id));")
+        except ProgrammingError:
+            print("TABLE ALREADY EXISTS")
+
+    def import_db(self):
+        file_path = os.path.join(data_path, 'university_majors.csv')
+        with open(file_path, 'r') as f:
+            connection = self.engine.raw_connection()
+            cursor = connection.cursor()
+            cols = "university_id,major_id"
+            cmd = 'COPY UniversityMajors({cols}) FROM STDIN WITH (FORMAT CSV, HEADER TRUE)'.format(cols=cols)
+            cursor.copy_expert(cmd, f)
+            connection.commit()
+
+
 if __name__ == "__main__":
     try:
         universities = University()
@@ -493,5 +533,19 @@ if __name__ == "__main__":
     try:
         subs = Subscribes()
         subs.import_db()
+    except:
+        print("DB EXISTS WITH DATA")
+
+
+    try:
+        major = Majors()
+        major.import_db()
+    except:
+        print("DB EXISTS WITH DATA")
+
+
+    try:
+        uni_majors = UniversityMajors()
+        uni_majors.import_db()
     except:
         print("DB EXISTS WITH DATA")
