@@ -160,6 +160,13 @@ class Comment(Base):
             return [dict(i) for i in res]
         return False
 
+    def get_comments_by_university_id(self, university_id):
+        q = text("SELECT comment FROM comment WHERE university_id = '{university_id}'".format(university_id=university_id))
+        res = self.conn.execute(q)
+        if res.rowcount > 0:
+            return [dict(i) for i in res]
+        return False
+
 
 class University(Base):
     def __init__(self):
@@ -195,6 +202,13 @@ class University(Base):
 
     def get_university_by_name(self, name):
         q = text("SELECT * FROM universities WHERE name LIKE '{name}%'".format(name=name))
+        res = self.conn.execute(q)
+        if res.rowcount > 0:
+            return [dict(i) for i in res]
+        return False
+
+    def get_university_by_id(self, university_id):
+        q = text("SELECT * FROM universities WHERE university_id = '{university_id}'".format(name=university_id))
         res = self.conn.execute(q)
         if res.rowcount > 0:
             return [dict(i) for i in res]

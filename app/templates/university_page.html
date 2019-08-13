@@ -1,10 +1,9 @@
 {% extends '/layout.html' %}
 {% block content %}
-{% for result in  results %}
 <div class="row row-custom" >
 <div class="d-flex p-2"></div>
     <div style = "position:relative; left: 85%;">
-    <a href="{{result['university_page_link']}}" class="btn btn-primary">More Info</a>
+    <a href="#" class="btn btn-primary">More Info</a>
     </div>
     <div class="row"><h2 class="center-align">{{result['name']}}</h2></div>
     <div class="row">
@@ -86,9 +85,30 @@
         </div>
 
     </div>
+    <div class="row">
+    <div class="user-activity">
+        <h2>User activity</h2>
+        {% if comments %}
+        {% for comment in comments %}
+            <div class="card shadow margined rss-card">
+                <div class="container-fluid row" style="height: 100%">
+                    <div class="col d-flex align-items-center justify-content-center image-col">
+                        <img class="img-fluid rounded-circle comment-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="nik" />
+                    </div>
+                    <div class="col contentBar cutLink">
+                        {{comment['comment'] }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <p>User has no comments!</p>
+        {% endif %}
+    </div>
+
+</div>
 
 
 </div>
-{%endfor%}
 
 {% endblock content %}
