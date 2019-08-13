@@ -17,8 +17,8 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     dob = DateField("Date of Birth")
 
-    choices = [("ug", "Undergraduate Student"), ("bd","Bachelor's Degree"),
-            ("ms", "Master's Degree"), ("dg", "Doctoral Degree")]
+    choices = [("Undergraduate Student", "Undergraduate Student"), ("Bachelor's Degree", "Bachelor's Degree"),
+               ("Master's Degree", "Master's Degree"), ("Doctoral Degree", "Doctoral Degree")]
     edu_attainment = SelectField("Educational Attainment", choices=choices)
 
     alumni_of = StringField("University Affiliation")
@@ -35,6 +35,17 @@ class RegistrationForm(FlaskForm):
         # if user:
         #     raise ValidationError("username taken")
         pass
+
+
+class InfoChangeForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), Length(min=2, max=100)])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    choices = [("Undergraduate Student", "Undergraduate Student"), ("Bachelor's Degree", "Bachelor's Degree"),
+               ("Master's Degree", "Master's Degree"), ("Doctoral Degree", "Doctoral Degree")]
+    edu_attainment = SelectField("Educational Attainment", choices=choices)
+    submit = SubmitField('Save')
 
 
 class LoginForm(FlaskForm):

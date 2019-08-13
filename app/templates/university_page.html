@@ -1,10 +1,8 @@
 {% extends '/layout.html' %}
 {% block content %}
-{% for result in  results %}
 <div class="row row-custom" >
 <div class="d-flex p-2"></div>
     <div style = "position:relative; left: 85%;">
-    <a href="{{ result['university_page_link'] }}" class="btn btn-primary">More Info</a>
     </div>
     <div class="row"><h2 class="center-align">{{result['name']}}</h2></div>
     <div class="row">
@@ -18,21 +16,21 @@
                         <div class="card-header tab-card-header">
                             <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link" id="one-tab" data-toggle="tab" href="#gen_ref_{{loop.index}}" role="tab" aria-controls="One" aria-selected="true">General</a>
+                                    <a class="nav-link" id="one-tab" data-toggle="tab" href="#one" role="tab" aria-controls="One" aria-selected="true">General</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="two-tab" data-toggle="tab" href="#demo_ref_{{loop.index}}" role="tab" aria-controls="Two" aria-selected="false">Demographics</a>
+                                    <a class="nav-link" id="two-tab" data-toggle="tab" href="#two" role="tab" aria-controls="Two" aria-selected="false">Demographics</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="three-tab" data-toggle="tab" href="#fin_ref_{{loop.index}}" role="tab" aria-controls="Three" aria-selected="false">Financial</a>
+                                    <a class="nav-link" id="three-tab" data-toggle="tab" href="#three" role="tab" aria-controls="Three" aria-selected="false">Financial</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="four-tab" data-toggle="tab" href="#stats_ref_{{loop.index}}" role="tab" aria-controls="Three" aria-selected="false">Statistics</a>
+                                    <a class="nav-link" id="four-tab" data-toggle="tab" href="#four" role="tab" aria-controls="Three" aria-selected="false">Statistics</a>
                                 </li>
                             </ul>
                         </div>
                         <div class="tab-content" id="myTabContent"  style="min-height: 280px">
-                            <div class="tab-pane fade show active p-3" id="gen_ref_{{loop.index}}" role="tabpanel" aria-labelledby="one-tab">
+                            <div class="tab-pane fade show active p-3"  id="one" role="tabpanel" aria-labelledby="one-tab">
                                 <h5 class="card-title">General</h5>
                                 <p>
                                     Name: {{result['name']}}<br/>
@@ -46,7 +44,7 @@
 
                                 </p>
                             </div>
-                            <div class="tab-pane fade p-3" id="demo_ref_{{loop.index}}" role="tabpanel" aria-labelledby="two-tab" >
+                            <div class="tab-pane fade p-3" role="tabpanel" id="two" aria-labelledby="two-tab" >
                                 <h5 class="card-title">Demographics</h5>
                                 <p>
                                     Number of Students: {{result['attendance_academic_year']}}<br/>
@@ -59,7 +57,7 @@
                                     Minority Serving Native American: {{ True if result['minority_serving_nant'] else False}} <br/>
                                 </p>
                             </div>
-                            <div class="tab-pane fade p-3" id="fin_ref_{{loop.index}}" role="tabpanel" aria-labelledby="three-tab">
+                            <div class="tab-pane fade p-3"  role="tabpanel" id="three" aria-labelledby="three-tab">
                                 <h5 class="card-title">Financial</h5>
                                 <p>
                                     In-state Tuition: ${{result['tuition_in_state']}} <br/>
@@ -69,7 +67,7 @@
                                     Average Monthly Faculty Salary: ${{result['faculty_salary']}} <br/>
                                 </p>
                             </div>
-                            <div class="tab-pane fade p-3" id="stats_ref_{{loop.index}}" role="tabpanel" aria-labelledby="three-tab">
+                            <div class="tab-pane fade p-3"  role="tabpanel" id="four" aria-labelledby="three-tab">
                                 <h5 class="card-title">Statistics</h5>
                                 <p>
                                     Admission Rate Overall: {{result['admission_rate_overall']|float *100}}%<br/>
@@ -82,13 +80,34 @@
 
             </div>
 
-            <hr/>
         </div>
 
     </div>
+    <hr/>
+    <div class="row"><hr/>
+    <div class="user-activity">
+        <h2>User activity</h2>
+        {% if comments %}
+        {% for comment in comments %}
+            <div class="card shadow margined rss-card">
+                <div class="container-fluid row" style="height: 100%">
+                    <div class="col d-flex align-items-center justify-content-center image-col">
+                        <img class="img-fluid rounded-circle comment-img" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="nik" />
+                    </div>
+                    <div class="col contentBar cutLink">
+                        {{comment['comment'] }}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+        <p>User has no comments!</p>
+        {% endif %}
+    </div>
+
+</div>
 
 
 </div>
-{%endfor%}
 
 {% endblock content %}

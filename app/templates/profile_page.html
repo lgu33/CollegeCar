@@ -7,7 +7,7 @@
                 <img class="img-fluid profile-bgHome" src="https://cdn.pixabay.com/photo/2018/08/14/13/23/ocean-3605547_960_720.jpg" />
                 <img class="img-fluid avatar" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" />
             </div>
-            <button class="btn">Add Friend</button>
+            <a href="{{url_for('infochange', uid=session['user']['id'])}}" class="btn">Edit Profile</a>
             <div class="user-profile-data">
                 <h1>{{ [user_profile['first_name'], user_profile['last_name']] | join(" ") }}</h1>
                 <p>"Put a Quote that you like here"</p>

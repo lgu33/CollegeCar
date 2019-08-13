@@ -6,6 +6,11 @@ db_conn = Base()
 # db_user = Users()
 
 
+def delete_user_by_id(uid):
+    res = db_conn.conn.execute("DELETE FROM users WHERE id='{uid}'".format(uid=uid))
+    return res
+
+
 def get_entire_record_university(university_id):
     """
     :param university_id:

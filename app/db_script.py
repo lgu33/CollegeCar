@@ -2,7 +2,6 @@ from sqlalchemy import create_engine
 from sqlalchemy.exc import ProgrammingError
 from sqlalchemy import text
 import os
-import pandas as pd
 
 curr_dir = os.path.dirname(os.path.realpath(__file__))
 data_path = os.path.join(curr_dir, 'db_data')
@@ -75,7 +74,7 @@ class Users(Base):
 
     def insert_user(self, first_name, last_name, username, email, password, joined_site, dob, attainment, alumni_of):
         q = text("INSERT INTO users(first_name, last_name, username, email, password, joined_site, dob, educational_attainment, university_id) "
-                 "VALUES('{first_name}', '{last_name}', '{username}', '{email}', '{password}', '{dob}', '{joined_site}', '{edu_attainment}', '{alumni_of}')".format(
+                 "VALUES('{first_name}', '{last_name}', '{username}', '{email}', '{password}', '{joined_site}', '{dob}', '{edu_attainment}', '{alumni_of}')".format(
             first_name=first_name, last_name=last_name, username=username, email=email, password=password, dob=dob, joined_site=joined_site,
             alumni_of=alumni_of, edu_attainment=attainment))
 
@@ -154,6 +153,14 @@ class Comment(Base):
             return [dict(i) for i in res]
         return False
 
+    def get_comments_by_university_id(self, university_id):
+        q = text(
+            "SELECT comment FROM comment WHERE university_id = '{university_id}'".format(university_id=university_id))
+        res = self.conn.execute(q)
+        if res.rowcount > 0:
+            return [dict(i) for i in res]
+        return False
+
 
 class University(Base):
     def __init__(self):
@@ -189,6 +196,13 @@ class University(Base):
 
     def get_university_by_name(self, name):
         q = text("SELECT * FROM universities WHERE name LIKE '{name}%'".format(name=name))
+        res = self.conn.execute(q)
+        if res.rowcount > 0:
+            return [dict(i) for i in res]
+        return False
+
+    def get_university_by_id(self, id):
+        q = text("SELECT * FROM universities WHERE id = '{id}'".format(id=id))
         res = self.conn.execute(q)
         if res.rowcount > 0:
             return [dict(i) for i in res]
