@@ -4,6 +4,8 @@ from app.forms import RedditAccountConfiguration, AutoMessengerSettings, Registr
 from flask import render_template, flash, redirect, url_for, request, session
 from sqlalchemy import create_engine
 #from sqlalchemy.sql import or_, asc
+from sqlalchemy import func
+from sqlalchemy.sql import text
 from app import app
 from datetime import datetime
 
@@ -49,19 +51,26 @@ def profile_page(uid):
     return render_template("profile_page.html", user_profile=new_user, comments=comments)
 
 
-@app.route("/university_page/<uid>")
+@app.route("/university_page/<uid>", methods=['POST', 'GET'])
 def university_page(uid):
     uid = int(uid)
     if not 'user' in session:
         flash("you are not logged in")
         return redirect(url_for('login'))
+    if request.method == "POST":
+        comment_text = request.form.get("comment_text")
+        user_id = session['user']['id']
+        statement = text("SELECT * FROM add_comment_to_university('{uid}', '{user_id}', '{comment}');".format(uid=uid,
+                                                                                                    user_id=user_id,
+                                                                                                    comment=comment_text)
+                         ).execution_options(autocommit=True)
+        db.conn.execute(statement)
 
-    # get comments by university id
+
     comments = comment.get_comments_by_university_id(uid)
     if not comments:
-        comments =[]
+        comments = []
 
-    # get all university information by university id
     university_data = get_entire_record_university(uid)
     university_data = dict(university_data[0][0])
     if not university_data:
@@ -69,7 +78,7 @@ def university_page(uid):
 
     # join university info with statistic info
 
-    return render_template('university_page.html', result=university_data, comments=comments)
+    return render_template('university_page.html', result=university_data, comments=comments, uid=uid)
 
 
 @app.route("/", methods=["POST", "GET"])

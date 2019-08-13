@@ -77,7 +77,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
 
         </div>
@@ -87,6 +86,14 @@
     <div class="row"><hr/>
     <div class="user-activity">
         <h2>User activity</h2>
+        <form method="POST" action="{{url_for('university_page', uid=uid)}}" class="input-group">
+                <div class="form-group" style="min-width: 100%;">
+                    <label>Share your review!</label>
+                    <textarea name="comment_text" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            <button type="submit" class="btn btn-primary">Submit comment</button>
+        </form>
+        <br>
         {% if comments %}
         {% for comment in comments %}
             <div class="card shadow margined rss-card">
