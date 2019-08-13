@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 from app.queries import *
-from app.forms import RedditAccountConfiguration, AutoMessengerSettings, RegistrationForm, LoginForm, PostForm
+from app.forms import RedditAccountConfiguration, AutoMessengerSettings, RegistrationForm, InfoChangeForm, LoginForm, PostForm
 from flask import render_template, flash, redirect, url_for, request, session
 from flask_login import login_user, current_user, logout_user, login_required
 from flask import render_template, flash, redirect, url_for, request, session
@@ -134,6 +134,31 @@ def register():
         return redirect(url_for('search'))
     return render_template("new_registration.html", title="Register", form=form)
 
+@app.route("/infochange/<uid>", methods=["POST", "GET"])
+def infochange(uid):
+    uid = int(uid)
+    if not 'user' in session:
+        flash("you are not logged in ")
+
+    form = InfoChangeForm()
+    if form.validate_on_submit():
+
+        username = form['username'].data
+        email = form['email'].data
+        password = form['password'].data
+        attainment = form['edu_attainment'].data
+        res = user.update_info(uid,username, email, password, attainment)
+        if not res:
+            flash("Failed to change Info")
+            return render_template("info_change.html", title="Register", form=form)
+        user_info = user.get_user_by_username(username)
+
+        user_data = user_info
+        session['user'] = user_data
+        session['id'] = user_data['id']
+        flash("Changes Saved for {}".format(user_data['username']), 'success')
+        return redirect(url_for('search'))
+    return render_template("info_change.html", title="InfoChange", form=form)
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
@@ -166,3 +191,9 @@ def logout():
         return render_template("login")
     del session['user']
     return redirect('/login')
+
+
+@app.route("/delete_user/<uid>",  methods=['GET', 'POST'])
+def delete_user(uid):
+    del session['user']
+    return redirect(url_for("register"))

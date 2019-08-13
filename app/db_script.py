@@ -15,7 +15,7 @@ class Base:
         self.USERNAME = "postgres"
         self.PASSWORD = "admin"
         self.PORT = 5432
-        self.DB_NAME = "collegecarddb"
+        self.DB_NAME = "CollegeCardDB"
         self.POSTGRES_LOCAL_BASE = "postgresql://{username}:{password}@localhost:{port}/{db_name}".format(username=self.USERNAME,
                                                                                                      password=self.PASSWORD,
                                                                                                      port=self.PORT,
@@ -84,6 +84,12 @@ class Users(Base):
             return True
         except:
             return False
+
+    def update_info(self,id, username, email, password, attainment):
+        q = text("UPDATE users "
+                 "SET username='{username}', email='{email}', password='{password}', educational_attainment='{attainment}' "
+                 "WHERE id='{id}'".format(id=id, username=username, email=email, password=password, attainment=attainment))
+        return self.conn.execute(q)
 
     def get_user_by_username(self, username):
         q = text("SELECT * FROM users WHERE username = '{name}'".format(name=username))
