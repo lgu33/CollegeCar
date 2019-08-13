@@ -70,7 +70,7 @@ def profile_page(uid):
     return render_template("profile_page.html", user_profile=new_user, comments=comments)
 
 
-@app.route("/university_page/<uid>)", methods=["POST", "GET"])
+@app.route("/university_page/<uid>)")
 def university_page(uid):
     uid = int(uid)
     if not 'user' in session:
@@ -83,13 +83,30 @@ def university_page(uid):
         comments =[]
 
     # get all university information by university id
-    university_data = universities.get_university_by_id(uid)
+    university_data = get_entire_record_university(uid)
+    university_data = dict(university_data[0][0])
     if not university_data:
         university_data = []
 
     # join university info with statistic info
 
-    return render_template('university_page.html', university_data=university_data, comments=comments)
+    return render_template('university_page.html', result=university_data, comments=comments)
+
+
+@app.route("/results_page/<q>", methods=["POST", "GET"])
+def results_page(q):
+    query = q
+    if query:
+        query_data = get_universities_from_query_by_name(query)
+        if not query_data:
+            query_data = []
+        for q in query_data:
+            q["university_page_link"] = url_for('university_page', uid=q['id'])
+        return render_template("search_cards.html", results=query_data)
+    else:
+        flash("Please enter something into the search box below", 'warning')
+        return render_template("search.html")
+    return redirect(url_for('search'))
 
 
 @app.route("/", methods=["POST", "GET"])
@@ -99,20 +116,9 @@ def search():
         flash("you are not logged in ")
         return redirect(url_for('login'))
     if request.method == "POST":
-        query = request.form['school_search']
-        if query:
-            query_data = get_universities_from_query_by_name(query)
-            if not query_data:
-                query_data = []
-            for q in query_data:
-                q["university_page_link"] = url_for('university_page', uid=q['id'])
-            return render_template("search_cards.html", results=query_data)
-        else:
-            flash("Please enter something into the search box below", 'warning')
-            return render_template("search.html")
+        return redirect(url_for('results_page', q=request.form['school_search']))
 
     return render_template("search.html")
-
 
 
 @app.route("/advanced_search", methods=["POST", "GET"])
@@ -122,8 +128,7 @@ def advanced_search():
 
     if request.method == "POST":
         print
-    return render_template('adv'
-                           'anced_search.html')
+    return render_template('advanced_search.html')
 
 
 @app.route("/register", methods=['GET', 'POST'])

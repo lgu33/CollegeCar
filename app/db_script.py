@@ -207,8 +207,8 @@ class University(Base):
             return [dict(i) for i in res]
         return False
 
-    def get_university_by_id(self, university_id):
-        q = text("SELECT * FROM universities WHERE university_id = '{university_id}'".format(name=university_id))
+    def get_university_by_id(self, id):
+        q = text("SELECT * FROM universities WHERE id = '{id}'".format(id=id))
         res = self.conn.execute(q)
         if res.rowcount > 0:
             return [dict(i) for i in res]
