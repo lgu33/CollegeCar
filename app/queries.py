@@ -28,10 +28,7 @@ def get_entire_record_university(university_id):
     return response_items, response_keys
 
 
-def jumbo_search_university(degree_plan, school_size, city_size, min_blk, min_annh, min_trib, min_aanipi, min_his,
-                            min_nant, men_only,
-                            women_only, religious, admission_scale, grants, accredited, engineer, law, buss,
-                            medical, research, state):
+def jumbo_search_university(query):
     """
     :param degree_plan: 0 DON'T care
                         1 2-yr associates, special focus prodominant
@@ -69,32 +66,85 @@ def jumbo_search_university(degree_plan, school_size, city_size, min_blk, min_an
     :param state:       0 = dont care, use abbreviation for the rest
     :return: university names and university ID
     """
-    if city_size == 0:
-        city_size_max = 100000
-        city_size_min = -10
-    if city_size == 1:
-        city_size_max = 24001
-        city_size_min = -10
-    if city_size == 2:
-        city_size_max = 42001
-        city_size_min = 24000
-    if city_size == 3:
-        city_size_max = 100000
-        city_size_min = 42000
-    # else:
-        # throw error
-    if degree_plan == 2:
-        degree_max = 16
-        degree_min = 5
-    if degree_plan == 1:
-        degree_max = 5
-        degree_min = 0
-    if degree_plan == 0:
-        degree_max = 16
-        degree_min = -3
+    query['region']
+    query['state']
+    query['city_name']
+    query['zip_code']
+    query['admission_rate']
+    query['total_enrollment']
+    query['cb_pred_black']
+    query['cb_hist_black']
+    query['cb_annh']
+    query['cb_tribal']
+    query['cb_asian']
+    query['cb_hispanic']
+    query['cb_native']
+    query['cb_men']
+    query['cb_women']
+    query['tuition_in_state']
+    query['tuition_out_state']
+    query['tuition_per_fte']
+    query['faculty_salary']
+
+
+
+
+
+    # if city_size == 0:
+    #     city_size_max = 100000
+    #     city_size_min = -10
+    # if city_size == 1:
+    #     city_size_max = 24001
+    #     city_size_min = -10
+    # if city_size == 2:
+    #     city_size_max = 42001
+    #     city_size_min = 24000
+    # if city_size == 3:
+    #     city_size_max = 100000
+    #     city_size_min = 42000
+    # # else:
+    #     # throw error
+    # if degree_plan == 2:
+    #     degree_max = 16
+    #     degree_min = 5
+    # if degree_plan == 1:
+    #     degree_max = 5
+    #     degree_min = 0
+    # if degree_plan == 0:
+    #     degree_max = 16
+    #     degree_min = -3
+    min_blk = min_blk - 1
+    max_blk = min_blk - 1
+    min_annh = min_annh - 1
+    min_trib = min_trib - 1
+    min_aanipi = min_aanipi - 1
+    min_his = min_his - 1
+    min_nant = min_nant - 1
+    men_only = men_only - 1
+    women_only = women_only - 1
+    religious = religious - 1
     response = db_conn.conn.execute("SELECT * FROM(universities U JOIN locations L USING(zip)) JOIN statistics S "
-                                        "USING(id) WHERE (L.irs_estimated_population_2015 < city_size_max)"
-                                        "AND (L.irs_estimated_population_2015 > city_size_min) AND ;")
+                                    "USING(id) WHERE (L.irs_estimated_population_2015 < city_size_max)"
+                                    "AND (L.irs_estimated_population_2015 < city_size_min) AND "
+                                    "S.minority_serving_historically_black < {min_blk} "
+                                    "S.minority_serving_annh < {min_annh}"
+                                    "S.minority_serving_tribal < {min_trib}"
+                                    "S.minority_serving_annipi < {min_annipi}"
+                                    "S.minority_serving.hispanic < {min_his}"
+                                    "S.minority_serving.nant < {min_nant}"
+                                    "S.men_only < {men_only}"
+                                    "S.women_only < {women_only}"
+                                    "S.religious_affiliation < {religious};").format(state=state,
+                                                                                     min_blk=min_blk,
+                                                                                     # max_blk=max_bik,
+                                                                                     # min_annh=min_anng,
+                                                                                     min_trib=min_trib,
+                                                                                     # min_annipi=min_annipa,
+                                                                                     min_his=min_his,
+                                                                                     min_nant=min_nant,
+                                                                                     men_only=men_only,
+                                                                                     women_only=women_only,
+                                                                                     religious=religious)
 
 
 # testing done

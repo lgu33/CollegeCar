@@ -161,6 +161,11 @@ def advanced_search():
                  "faculty_salary": request.form.get("faculty_salary"),
                  }
 
+        jumbo_search_university(query)
+        print
+        print
+        print
+
     return render_template('advanced_search.html')
 
 
